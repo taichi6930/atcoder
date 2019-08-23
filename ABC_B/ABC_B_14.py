@@ -1,9 +1,7 @@
-def Base_10_to_n(X, n):
-    if (int(X/n)):
-        return Base_10_to_n(int(X/n), n)+str(X % n)
-    return str(X % n)
-
-
-n, X =
-b = "{:0" + str(a) + "d}"
-print(b.format(100))
+n, x = map(int, input().split())
+a = list(map(int, input().split()))
+k = (('{:0' + str(n) + 'b}').format(x))[::-1]
+sum = 0
+for i in range(n):
+    sum += int(k[i]) * a[i]
+print(sum)
