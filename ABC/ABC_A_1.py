@@ -1,3 +1,2 @@
-H1 = int(input())
-H2 = int(input())
-print(H1 - H2)
+h = [int(input()) for i in range(2)]
+print(h[1] - h[0])
