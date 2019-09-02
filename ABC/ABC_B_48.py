@@ -1,3 +1,5 @@
+import math
+
 a, b, x = map(int, input().split())
-k = (b - ((a//x) * x)) // x
-print(k + 1 if b % x == 0 else k)
+minNum = a // x
+print(math.ceil((b - (minNum * x)) / x))
