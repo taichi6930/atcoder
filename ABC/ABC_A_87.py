@@ -1,2 +1,3 @@
 x, a, b = [int(input()) for _ in range(3)]
-print((x - a)//b)
+c = x - a
+print(c - (c//b) * b)
