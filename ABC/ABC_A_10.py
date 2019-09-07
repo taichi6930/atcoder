@@ -1,2 +1,1 @@
-S = input()
-print(S + "pp")
+print(input() + "pp")
