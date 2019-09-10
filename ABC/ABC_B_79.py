@@ -1,12 +1,6 @@
 n = int(input())
-a = 2
-b = 1
-c = 1
-if n == 1:
-    c = 1
-else:
+a, b, c = 2, 1, 1
+if n != 1:
     for i in range(1, n):
-        c = b + a
-        a = b
-        b = c
+        a, b, c = b, c, a + b
 print(c)
