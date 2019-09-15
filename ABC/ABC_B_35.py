@@ -1,9 +1,6 @@
 s = input()
-t = int(input())
-
-hor = abs(s.count("R") - s.count("L"))
-ver = abs(s.count("U") - s.count("D"))
-que = s.count("?")
-print(hor, ver)
-
-# まだ途中
+c = s.count
+r = abs(c("R") - c("L")) + abs(c("U") - c("D"))
+q = c("?")
+k = r - q
+print(r + q if int(input()) == 1 else k if k >= 0 else - k % 2)
