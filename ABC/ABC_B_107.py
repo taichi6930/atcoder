@@ -4,19 +4,18 @@ for i in range(h):
     a = input()
     if a.count(".") != w:
         aList.append(a)
-aLen = len(aList)
-print(aList, aLen)
+h = len(aList)
+print(aList, h)
+
+aLen = w
 
 for j in range(w):
-    aSum = 0
-    for i in range(aLen):
-        if aList[i][w-j-1] == ".":
-            aSum += 1
-    if aSum == aLen:
-        for a in range(aLen):
-            aList[a] = aList[a][0:aLen-j] + aList[a][aLen-j+1:aLen + 1]
+     aSum = sum(aList[i][w - j - 1] == "." for i in range(h))
+     if aSum == h:
+        for a in range(h):
+            aList[a] = aList[a][0:aLen-j-1] + aList[a][aLen-j:aLen]
         aLen -= 1
 
 
-for i in range(aLen+1):
-    print(aList[i])
+for i in range(h):
+     print(aList[i])
