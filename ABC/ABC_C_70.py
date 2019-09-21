@@ -1,2 +1,8 @@
-import math
-print(math.ceil((-1+(1+8*int(input()))**0.5)/2))
+n = int(input())
+a = 1
+
+for b in range(n):
+    b = int(input())
+    a = a*b//gcd(a, b)
+
+print(a)
