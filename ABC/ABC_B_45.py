@@ -10,5 +10,5 @@ while len(s[0]) * len(s[1]) * len(s[2]) > 0:
     else:
         ss = alphaList.index(swi)
         sLen = len(s[alphaList.index(swi)])
-        s[alphaList.index(swi)] = s[alphaList.index(swi)][1:sLen + 1]
-        swi = alphaList[ss]
+        swi, s[alphaList.index(swi)] = s[alphaList.index(
+            swi)][0], s[alphaList.index(swi)][1:sLen]
