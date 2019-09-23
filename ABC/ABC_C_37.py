@@ -1,6 +1,4 @@
 n, k = map(int, input().split())
+x, y = min(k, n-k+1), max(k, n-k+1)
 a = list(map(int, input().split()))
-aSum = 0
-for i in range(k):
-    aSum += sum(a[i: n - i])
-print(aSum)
+print(sum(a[i] * min(i+1, n-i, x) for i in range(n)))
