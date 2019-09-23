@@ -1,4 +1,10 @@
 n = int(input())
-cnt = 0
+sListSum = 0
+sList = [None] * n
 
-sList = [sorted(list(input())) for _ in range(n)]
+for i in range(n):
+    s = sorted(input())
+    sListSum += sList.count(s)
+    sList[i] = s
+
+print(sListSum)
