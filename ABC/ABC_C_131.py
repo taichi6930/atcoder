@@ -10,5 +10,5 @@ def calc(x):
 
 a, b, c, d = map(int, input().split())
 cd = c * d / fractions.gcd(c, d)
-print(b - a + 1, calc(cd), calc(c), calc(d))
+# print(b - a + 1, calc(cd), calc(c), calc(d))
 print(int(b - a + 1 + calc(cd) - calc(c) - calc(d)))

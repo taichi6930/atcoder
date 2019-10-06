@@ -1,16 +1,15 @@
 n = int(input())
-a = list(map(int, input().split()))
-aSet = sorted(set(a), reverse=True)
-recStock = 0
-recSquare = 0
-for i in range(len(aSet)):
-    aCnt = a.count(aSet[i])
-    if aCnt >= 4:
-        rectangle = aSet[i] * 2
-        break
-    elif aCnt >= 2:
-        if recStock > 0:
-            recSquare = aSet[i] * recStock
-        else:
-            recStock = aSet[i]
-print(recSquare)
+a = sorted(list(map(int, input().split())), reverse=True)
+swi = 0
+s = [0, 0]
+i = 0
+while i < len(a) - 1:
+    if a[i] == a[i + 1]:
+        s[swi] = a[i]
+        i += 1
+        swi += 1
+        if swi == 2:
+            break
+    i += 1
+
+print(s[0] * s[1])
