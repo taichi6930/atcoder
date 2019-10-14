@@ -1,3 +1,9 @@
-for i in range(9):
-    a = 1000
-    print(((i+1) * a + (9-i)), i, ((i+1) * a + (9-i)) % 13)
+import time
+
+n = int(input())
+start = time.time()
+
+for i in range(n):
+    a = 1
+
+print(time.time() - start)
