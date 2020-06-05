@@ -1,5 +1,6 @@
 import math
 
 a, b, x = map(int, input().split())
-minNum = math.ceil(a / x) * x
-print(int(b - minNum + x - ((b - minNum + x) % x))//x if minNum <= b else 0)
+minNum = a // x
+maxNum = b // x
+print((maxNum - minNum) if a % x != 0 else b//x-a//x+1)
