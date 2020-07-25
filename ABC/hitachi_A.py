@@ -1,11 +1,14 @@
-s = input()
-ans = "No"
-if len(s) != 1:
-    for i in range(len(s) - 2):
-        if s[i:i+2] == "hi":
-            ans = "Yes"
-            break
-    if s[len(s)-2:len(s)] == "hi":
-        ans = "Yes"
+import math
+import sys
+import bisect
+readline = sys.stdin.readline
 
-print(ans)
+
+def main():
+    s = readline().rstrip()
+    print('Yes' if s == 'hi' or s == 'hihi' or s == 'hihihi'or s ==
+          'hihihihi' or s == 'hihihihihi' else 'No')
+
+
+if __name__ == '__main__':
+    main()
