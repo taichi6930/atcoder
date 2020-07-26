@@ -2,16 +2,15 @@ import math
 import sys
 import collections
 import bisect
-import sympy
 readline = sys.stdin.readline
 
-
-def main():
-    n = int(readline().rstrip())
-    sumN = 0
-    for i in range(n):
-        sumN += len(sympy.divisors(i + 1)) * (i + 1)
-    print(sumN)
+def main():  # 約数の個数
+   N = int(readline().rstrip())
+   ans = 0
+   for i in range(1, N+1):
+        n = N // i
+        ans += 0.5 * n * (2*i + i * (n-1))
+    print(int(ans))
 
 
 if __name__ == '__main__':

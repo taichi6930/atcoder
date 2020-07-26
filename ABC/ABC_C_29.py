@@ -4,12 +4,8 @@ def Base_10_to_n(X, n):
     return str(X % n)
 
 
-alphaList = ["a", "b", "c"]
 n = int(input())
 for i in range(3**n):
-    num = str(Base_10_to_n(i, 3))
-    numStr = ""
-    print(num)
-    # for j in range(len(str(num))):
-    #     numStr += alphaList[num[j]]
-    # print(numStr)
+    num = ('{:0' + str(n) + '}').format(int(Base_10_to_n(i, 3)))
+    num = num.replace('0', 'a').replace('1', 'b').replace('2', 'c')
+    print(''.join(num))

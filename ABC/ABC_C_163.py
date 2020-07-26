@@ -1,16 +1,18 @@
 import sys
+import collections
+import bisect
 readline = sys.stdin.readline
 
 
 def main():
     n = int(readline().rstrip())
-    aList = list(map(int, readline().rstrip().split()))
-    aMax = max(aList)
+    aList = sorted(list(map(int, readline().rstrip().split())))
+    z = [0] * n
+    for a in aList:
+        z[a-1] += 1
+
     for i in range(n):
-        if aMax >= i + 1:
-            print(aList.count(i + 1))
-        else:
-            print(0)
+        print(z[i])
 
 
 if __name__ == '__main__':
