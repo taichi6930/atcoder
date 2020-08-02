@@ -7,17 +7,11 @@ readline = sys.stdin.readline
 def main():
     n = int(readline().rstrip())
     A = list(map(int, readline().rstrip().split()))
-    k = 0
-
-    if A.count(1) == 0:
-        print(-1)
-        return
-
+    k = [0] * (n + 1)
     for i in range(n):
-        if A[i] == k + 1:
-            k += 1
-
-    print(n - k)
+        k[i] += A[i] // 2
+        k[i + 1] += A[i] // 2
+    print(k)
 
 
 if __name__ == '__main__':

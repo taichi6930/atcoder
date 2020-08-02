@@ -1,17 +1,18 @@
 import sys
-input = sys.stdin.readline
-n = int(input())
-a = [int(input()) for _ in range(n)]
-a.sort()
-aSum = 0
-cnt = 0
-for i in range(n):
-    aCnt = a.count(a[cnt])
-    if aCnt % 2 == 1:
-        aSum += 1
-    cnt += aCnt
-    if cnt >= n:
-        break
+import collections
+import bisect
 
 
-print(aSum)
+def main():
+    n = int(input())
+    A = [int(input()) for _ in range(n)]
+    c = collections.Counter(A)
+    sumA = 0
+    cKeys = c.keys()
+    for cKey in cKeys:
+        sumA += c[cKey] % 2
+    print(sumA)
+
+
+if __name__ == '__main__':
+    main()

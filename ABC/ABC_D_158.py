@@ -14,7 +14,6 @@ for i in range(q):
             else:
                 s += c
         else:
-            flg *= -1
             if flg == 1:
                 s += c
             else:

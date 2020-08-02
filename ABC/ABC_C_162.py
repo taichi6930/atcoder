@@ -1,20 +1,18 @@
 import sys
 import math
+import time
 readline = sys.stdin.readline
 
 
 def main():
-    kArray = []
-    for k in range(1, 200):
-        kSum = 0
-        for a in range(1, k + 1):
-            for b in range(1, k + 1):
-                for c in range(1, k + 1):
-                    kSum += gcd(a, b, c)
-        kArray.append(kSum)
-        if k % 20 == 0:
-            print(kArray)
-    print(kArray)
+    listSum = [1, 3, 6]
+    k = int(input())
+    sumGCD = 0
+    for a in range(1, k + 1):
+        for b in range(a, k + 1):
+            for c in range(b, k + 1):
+                sumGCD += gcd(a, b, c) * listSum[len(set([a, b, c])) - 1]
+    print(sumGCD)
 
 
 def gcd(a, b, c):
@@ -22,4 +20,6 @@ def gcd(a, b, c):
 
 
 if __name__ == '__main__':
+    s = time.time()
     main()
+    print(time.time() - s)

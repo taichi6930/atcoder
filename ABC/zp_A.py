@@ -1,4 +1,3 @@
-import math
 import sys
 import collections
 import bisect
@@ -6,8 +5,8 @@ readline = sys.stdin.readline
 
 
 def main():
-    s = list(readline().rstrip())
-    print(s)
+    n, a, b = map(int, readline().rstrip().split())
+    print(min(a, b), max(a + b - n, 0))
 
 
 if __name__ == '__main__':

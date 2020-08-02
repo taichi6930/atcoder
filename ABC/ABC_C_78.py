@@ -5,10 +5,10 @@ readline = sys.stdin.readline
 
 
 def main():
-    a, b = map(float, readline().rstrip().split())
-    a = int(a)
-    b = round(b * 100)
-    print((a * b) // 100)
+    n, m = map(int, readline().rstrip().split())
+    sumA = 0
+    for i in range(m, n + 1):
+        print((i + 1)/2 * i)
 
 
 if __name__ == '__main__':
