@@ -1,7 +1,11 @@
-a, b, c, x, y = map(int, input().split())
+import math
+import sys
+readline = sys.stdin.readline
 
-# ABピザを買うかA,Bピザを買うか
-cNum = min(x // 2, y // 2) * 2
-ans = min(a + b, c * 2) * cNum + (x-cNum) * \
-    min(a, c * 2) + (y-cNum) * min(b, c * 2)
-print(ans)
+
+def main():
+    a, b, c, x, y = map(int, input().split())
+
+
+if __name__ == '__main__':
+    main()

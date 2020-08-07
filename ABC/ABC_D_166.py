@@ -7,11 +7,12 @@ def main():
     x = int(readline().rstrip())
     a, b, c = 0, 0, 1
 
-    while a < 10000:
-        c = 1 if a ** 5 - x > 0 else - 1
-        b = c * (c * (a ** 5 - x)) ** 0.2
-        if b - int(b) == 0:
-            print(a, int(b))
+    while a < 1000:
+        k = a ** 5 - x
+        c = 1 if k >= 0 else - 1
+        b = abs(k) ** 0.2
+        if int(b) ** 5 == abs(k):
+            print(a, c * abs(int(b)))
             return
         a += 1
 

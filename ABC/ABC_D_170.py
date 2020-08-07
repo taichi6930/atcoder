@@ -19,7 +19,6 @@ def main():
         for j in range(num):
             if cKeys[num] < cKeys[j] * 2:
                 continue
-            if
 
     print(sumA)
 

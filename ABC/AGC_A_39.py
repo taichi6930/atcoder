@@ -1,16 +1,33 @@
-s = list(input())
-k = int(input())
-cnt = 0
-lenS = len(s)
-ans = 0
-if lenS == s.count(s[0]):
-    ans = (lenS * k // 2)
-else:
-    for i in range(lenS - 1):
-        if s[i] == s[i + 1]:
-            s[i + 1] = "1"
-            ans += 1
-    ans *= k
-    if s[0] == s[lenS-1]:
-        ans -= k - 1
-print(ans)
+import sys
+import collections
+import bisect
+
+
+def main():
+    sk = list(input())
+    k = int(input())
+
+    if sk == 1:
+        print(0)
+        return
+
+    s = sk + sk[0:1]
+    changeCnt = 0
+    cnt = 1
+    while cnt < len(sk) + 1:
+        if s[cnt] != s[cnt - 1]:
+            cnt += 1
+        else:
+            if s[cnt + 1] != s[cnt]:
+                changeCnt += 1
+                s[cnt] = "aaa" + str(cnt)
+                cnt += 1
+            else:
+                changeCnt += 1
+                s[cnt] = "aaa" + str(cnt)
+                cnt += 2
+    print(changeCnt * k)
+
+
+if __name__ == '__main__':
+    main()

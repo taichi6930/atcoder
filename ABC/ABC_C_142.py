@@ -1,7 +1,16 @@
-n = int(input())
-a = list(map(int, input().split()))
-b = [None] * n
-print(str(a.index(1) + 1), end=" ")
-for i in range(1, n):
-    print(str(a.index(i + 1) + 1), end=" ")
-print()
+import sys
+import collections
+import bisect
+
+
+def main():
+    n = int(input())
+    A = list(map(int, input().split()))
+    B = [0] * n
+    for i in range(n):
+        B[A[i] - 1] = str(i + 1)
+    print(" ".join(B))
+
+
+if __name__ == '__main__':
+    main()
