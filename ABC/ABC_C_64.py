@@ -1,16 +1,10 @@
-aList = [0] * 8
-n = int(input())
-a = list(map(int, input().split()))
-for i in range(n):
-    if a[i] >= 2800:
-        aList[7] += 1
-    else:
-        aList[a[i]//400] += 1
-aMin = 8 - aList.count(0)
-aMax = aMin
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+    l = [i//400 for i in a if i < 3200]
+    c = len(set(l))
+    print(max(1, c), c+n-len(l))
 
-if aList[7] > 1:
-    aMax = 8
-    if aList.count(0) > aList[7]:
-        aMax = 7 - aList.count(0) + aList[7]
-print(aMin, aMax)
+
+if __name__ == '__main__':
+    main()
