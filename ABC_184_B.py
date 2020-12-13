@@ -1,10 +1,15 @@
 def main():
-    n = int(input())
-    sumA = 0
+    n, x = map(int, input().split())
+    s = list(input())
+    ans = 0
+    ans += x
+
     for i in range(n):
-        a, b = map(int, input().split())
-        sumA += (a + b) * (b - a + 1) // 2
-    print(sumA)
+        if s[i] == "o":
+            ans += 1
+            continue
+        ans = max(0, ans - 1)
+    print(ans)
 
 
 if __name__ == '__main__':

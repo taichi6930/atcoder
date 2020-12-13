@@ -1,5 +1,7 @@
 def main():
-    print("White" if int(input()) % 2 == 0 else "Black")
+    a, b = map(int, input().split())
+    c, d = map(int, input().split())
+    print(a * d - b * c)
 
 
 if __name__ == '__main__':

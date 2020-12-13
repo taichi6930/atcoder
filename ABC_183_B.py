@@ -1,10 +1,6 @@
 def main():
-    n = int(input())
-    sumA = 0
-    for i in range(n):
-        a, b = map(int, input().split())
-        sumA += (a + b) * (b - a + 1) // 2
-    print(sumA)
+    sx, sy, gx, gy = map(int, input().split())
+    print(sx - sy*(sx - gx) / (sy + gy))
 
 
 if __name__ == '__main__':
