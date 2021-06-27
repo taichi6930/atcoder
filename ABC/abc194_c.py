@@ -1,6 +1,9 @@
 import collections
 import math
 
+mod = 10 ** 9 + 7
+alphaList = list("abcdefghijklmnopqrstuvwxyz")
+
 
 def is_prime(n):
     if n == 1:
@@ -14,9 +17,10 @@ def is_prime(n):
 
 
 def main():
-    n, m = map(int, input().split())
-    maxGcd = math.floor(m / n)
-    print(maxGcd)
+    n = int(input())
+    A = list(map(int, input().split()))
+    A2 = [A[i] ** 2 for i in range(n)]
+    print(sum(A2) // 2 - sum(A) ** 2)
 
 
 if __name__ == '__main__':
