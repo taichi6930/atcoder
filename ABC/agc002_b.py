@@ -18,13 +18,14 @@ def is_prime(n):
 
 
 def main():
-    n = int(input())
-    S = list(input())
-    ans = 1
-    C = collections.Counter(S)
-    for val in C.values():
-        ans = (ans * (val + 1)) % mod
-    print((ans - 1) % mod)
+    n, m = map(int, input().split())
+    AList = []
+
+    for i in range(m):
+        x, y = map(int, input().split())
+        if x in AList or len(AList) == 0:
+            AList.append(y)
+    print(len(set(AList)))
 
 
 if __name__ == '__main__':

@@ -1,9 +1,9 @@
 import collections
 import math
+from bisect import bisect_left
 
 mod = 10 ** 9 + 7
 alphaList = list("abcdefghijklmnopqrstuvwxyz")
-mod2 = 998244353
 
 
 def is_prime(n):
@@ -20,11 +20,20 @@ def is_prime(n):
 def main():
     n = int(input())
     S = list(input())
-    ans = 1
-    C = collections.Counter(S)
-    for val in C.values():
-        ans = (ans * (val + 1)) % mod
-    print((ans - 1) % mod)
+
+    if S[0] != S[-1]:
+        print(1)
+        return
+    if len(S) <= 3:
+        print(-1)
+        return
+    st = S[1: -1]
+    k = S[0]
+    for i in range(len(st) - 1):
+        if st[i] != k and st[i + 1] != k:
+            print(2)
+            return
+    print(-1)
 
 
 if __name__ == '__main__':

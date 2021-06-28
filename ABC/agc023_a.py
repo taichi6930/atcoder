@@ -19,12 +19,20 @@ def is_prime(n):
 
 def main():
     n = int(input())
-    S = list(input())
-    ans = 1
-    C = collections.Counter(S)
-    for val in C.values():
-        ans = (ans * (val + 1)) % mod
-    print((ans - 1) % mod)
+    A = list(map(int, input().split()))
+    B = [0] + [None] * n
+
+    for i in range(n):
+        B[i + 1] = B[i] + A[i]
+
+    C = collections.Counter(B)
+
+    ans = 0
+
+    for key in C.keys():
+        ans += C[key] * (C[key] - 1) // 2
+
+    print(ans)
 
 
 if __name__ == '__main__':
