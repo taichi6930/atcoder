@@ -1,5 +1,7 @@
 import collections
 import math
+from itertools import accumulate
+from bisect import bisect_left
 
 mod = 10 ** 9 + 7
 alphaList = list("abcdefghijklmnopqrstuvwxyz")
