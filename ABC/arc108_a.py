@@ -46,40 +46,15 @@ def make_divisors(n):
     return divisors
 
 
-def prime_factorization(n):
-    """
-    task:prime factorization
-    return:prime
-    type:list
-    """
-    lis = []
-    for i in range(2, int(n**0.5)+1):  # 割り算のTryは2から、平方根以下まで
-        while True:
-            if n % i == 0:
-                lis.append(i)  # 余り0なら素因数分解リストにappendする
-                n = n//i  # nの更新
-
-            else:
-                break
-
-    if n > int(n**0.5):  # nが　int(n**0.5) より大きなポイントでbreakしていたらそれをリストにappend 素数の時もこれ
-        lis.append(n)
-
-    return lis
-
-
 def main():
-    n, k = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = [0] + list(accumulate(A))
-    ans = 0
-
-    for b in B:
-        i = bisect_left(B, b + k)
-        if i == n + 1:
-            break
-        ans += n + 1 - i
-    print(ans)
+    s, p = map(int, input().split())
+    N = make_divisors(p)
+    for n in N:
+        m = p // n
+        if n + m == s:
+            print("Yes")
+            return
+    print("No")
 
 
 if __name__ == '__main__':

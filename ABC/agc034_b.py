@@ -53,32 +53,42 @@ def prime_factorization(n):
     type:list
     """
     lis = []
-    for i in range(2, int(n**0.5)+1):  # 割り算のTryは2から、平方根以下まで
+    for i in range(2, int(n ** 0.5) + 1):  # 割り算のTryは2から、平方根以下まで
         while True:
             if n % i == 0:
                 lis.append(i)  # 余り0なら素因数分解リストにappendする
-                n = n//i  # nの更新
+                n = n // i  # nの更新
 
             else:
                 break
 
-    if n > int(n**0.5):  # nが　int(n**0.5) より大きなポイントでbreakしていたらそれをリストにappend 素数の時もこれ
+    if n > int(n ** 0.5):  # nがint(n**0.5) より大きなポイントでbreakしていたらそれをリストにappend 素数の時もこれ
         lis.append(n)
 
     return lis
 
 
 def main():
-    n, k = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = [0] + list(accumulate(A))
-    ans = 0
+    s = list(input())
+    n = len(s)
 
-    for b in B:
-        i = bisect_left(B, b + k)
-        if i == n + 1:
+    ans = 0
+    if n < 3:
+        print(ans)
+        return
+
+    num = 0
+    for i in range(10 ** 9):
+        if num > n - 3:
             break
-        ans += n + 1 - i
+        if "".join(s[num: num + 3]) != "ABC":
+            num += 1
+            continue
+        s[num] = "B"
+        s[num + 1] = "C"
+        s[num + 2] = "A"
+        ans += 1
+        num = max(0, num - 2)
     print(ans)
 
 

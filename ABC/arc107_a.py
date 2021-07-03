@@ -69,17 +69,11 @@ def prime_factorization(n):
 
 
 def main():
-    n, k = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = [0] + list(accumulate(A))
-    ans = 0
-
-    for b in B:
-        i = bisect_left(B, b + k)
-        if i == n + 1:
-            break
-        ans += n + 1 - i
-    print(ans)
+    a, b, c = map(int, input().split())
+    A = (a * (a + 1) // 2) % mod2
+    B = (b * (b + 1) // 2) % mod2
+    C = (c * (c + 1) // 2) % mod2
+    print(A * B * C % mod2)
 
 
 if __name__ == '__main__':

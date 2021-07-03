@@ -20,6 +20,8 @@ def main():
     V = list(map(int, input().split()))
     V0, V1 = V[0::2], V[1::2]
     CV0, CV1 = collections.Counter(V0), collections.Counter(V1)
+
+    # 1位と2位の数字を知る
     V0no1, V0no2 = CV0.most_common()[0], 0
     if len(CV0.keys()) != 1:
         V0no2 = CV0.most_common()[1]
@@ -35,12 +37,9 @@ def main():
         print(0)
         return
 
-    # V0,V1どちらかが1種類の時
-    if V0no2 == 0:
-        if V0no1[0] == V1no1[0]:
-            print(len(V0) * 2 - V0no1[1] - V1no2[1])
-            return
-        print(len(V0) * 2 - V0no1[1] - V1no1[1])
+    # V0の1位とV1の1位が違う場合
+    if V0no1[0] != V1no1[0]:
+        print(len(V0) - min(V0.count(V0no1[0]), V1.count(V1no1[0])))
         return
 
 

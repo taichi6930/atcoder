@@ -62,24 +62,31 @@ def prime_factorization(n):
             else:
                 break
 
-    if n > int(n**0.5):  # nが　int(n**0.5) より大きなポイントでbreakしていたらそれをリストにappend 素数の時もこれ
+    if n > int(n**0.5):  # nが int(n**0.5) より大きなポイントでbreakしていたらそれをリストにappend 素数の時もこれ
         lis.append(n)
 
     return lis
 
 
 def main():
-    n, k = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = [0] + list(accumulate(A))
-    ans = 0
+    n = int(input())
+    B = list(map(int, input().split()))
+    ANS = []
 
-    for b in B:
-        i = bisect_left(B, b + k)
-        if i == n + 1:
-            break
-        ans += n + 1 - i
-    print(ans)
+    for i in range(n):
+        lenB = len(B)
+        for j in range(lenB):
+            # 後ろから見ていって、該当する数字があれば
+            # ANSに保存して取り除く、出来なければアウト
+            if B[lenB - j - 1] == lenB - j:
+                ANS.append(lenB - j)
+                B.pop(lenB - j - 1)
+                break
+            if lenB - j - 1 == 0:
+                print(-1)
+                return
+    for j in range(n):
+        print(ANS[n - j - 1])
 
 
 if __name__ == '__main__':

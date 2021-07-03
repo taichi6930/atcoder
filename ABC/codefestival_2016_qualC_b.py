@@ -69,17 +69,16 @@ def prime_factorization(n):
 
 
 def main():
-    n, k = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = [0] + list(accumulate(A))
-    ans = 0
+    k, t = map(int, input().split())
+    A = list(map(int, input().split())) + [0]
 
-    for b in B:
-        i = bisect_left(B, b + k)
-        if i == n + 1:
+    for i in range(10 ** 9):
+        A.sort(reverse=True)
+        if A[1] == 0:
             break
-        ans += n + 1 - i
-    print(ans)
+        A[0] -= 1
+        A[1] -= 1
+    print(max(sum(A) - 1, 0))
 
 
 if __name__ == '__main__':
