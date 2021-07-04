@@ -2,7 +2,7 @@ import collections
 import math
 from itertools import accumulate
 from bisect import bisect_left
-from copy import deepcopy
+from math import copysign
 
 mod = 10 ** 9 + 7
 alphaList = list("abcdefghijklmnopqrstuvwxyz")
@@ -46,36 +46,9 @@ def make_divisors(n):
     return divisors
 
 
-def prime_factorization(n):
-    """
-    task:prime factorization
-    return:prime
-    type:list
-    """
-    lis = []
-    for i in range(2, int(n ** 0.5) + 1):  # 割り算のTryは2から、平方根以下まで
-        while True:
-            if n % i == 0:
-                lis.append(i)  # 余り0なら素因数分解リストにappendする
-                n = n // i  # nの更新
-
-            else:
-                break
-
-    if n > int(n ** 0.5):  # nがint(n**0.5) より大きなポイントでbreakしていたらそれをリストにappend 素数の時もこれ
-        lis.append(n)
-
-    return lis
-
-
 def main():
     n, x = map(int, input().split())
-    A = [0] + list(map(int, input().split())) + [0]
-    B = []
-
-    for i in range(n + 1):
-        B.append(A[i] + A[i + 1])
-    print(B)
+    A = list(map(int, input().split()))
 
 
 if __name__ == '__main__':

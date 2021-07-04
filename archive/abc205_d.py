@@ -1,8 +1,12 @@
 import collections
 import math
+from itertools import accumulate
+from bisect import bisect_left
+from math import copysign
 
 mod = 10 ** 9 + 7
 alphaList = list("abcdefghijklmnopqrstuvwxyz")
+mod2 = 998244353
 
 
 def is_prime(n):
@@ -16,9 +20,39 @@ def is_prime(n):
     return True
 
 
+def make_divisors(n):
+    """
+    約数列挙を行う。
+
+    Parameters
+    ----------
+    n : int
+        約数を求めたい数
+
+    Returns
+    -------
+    divisors : [int]
+        約数が昇順に入った配列
+    """
+    lower_divisors, upper_divisors = [], []
+    i = 1
+    while i * i <= n:
+        if n % i == 0:
+            lower_divisors.append(i)
+            if i != n // i:
+                upper_divisors.append(n//i)
+        i += 1
+    divisors = lower_divisors + upper_divisors[::-1]
+    return divisors
+
+
 def main():
     n, q = map(int, input().split())
     A = list(map(int, input().split()))
+    for i in range(q):
+        k = int(input())
+        index = bisect_left(A, k)
+        print(index, k)
 
 
 if __name__ == '__main__':
