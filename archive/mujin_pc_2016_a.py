@@ -69,7 +69,8 @@ def prime_factorization(n):
 
 
 def main():
-    pass
+    # print("Right" if input() in list("OPKL") else "Left")
+    print("RLiegfhtt"[not(input() in list("OPKL"))::2])
 
 
 if __name__ == '__main__':

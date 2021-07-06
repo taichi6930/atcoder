@@ -69,16 +69,26 @@ def prime_factorization(n):
 
 
 def main():
-    a, b = map(int, input().split())
-    ans = 0
-    for i in range(a):
-        k = i + 1
-        x = math.ceil(a / k) * k
-        y = math.floor(b / k) * k
+    n = int(input())
 
-        if x < y and a <= x and y <= b:
-            ans = k
-    print(ans)
+    # 素数判定を行う
+    if is_prime(n):
+        print("Prime")
+        return
+
+    # 素数っぽくない条件を出す
+    n1 = int(str(n)[-1])
+    if n1 % 2 == 0 or n1 == 5 or n == 1:
+        print("Not Prime")
+        return
+
+    arrayN = list(map(lambda x: int(x),
+                      list(str(n))))
+    if sum(arrayN) % 3 == 0:
+        print("Not Prime")
+        return
+
+    print("Prime")
 
 
 if __name__ == '__main__':

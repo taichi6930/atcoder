@@ -69,15 +69,32 @@ def prime_factorization(n):
 
 
 def main():
-    a, b = map(int, input().split())
+    n = int(input())
+    S = list(input())
+    oxList = ["o", "x"]
     ans = 0
-    for i in range(a):
-        k = i + 1
-        x = math.ceil(a / k) * k
-        y = math.floor(b / k) * k
 
-        if x < y and a <= x and y <= b:
-            ans = k
+    for i in range(n - 1):
+        T = S[i + 1:]
+        lenT = len(T)
+        index = lenT
+
+        if S[i] == 'o':
+            index = bisect_left(T, 'x')
+            if 'x' == T[0]:
+                index = 0
+            elif index == lenT:
+                continue
+            ans += lenT - index
+
+        elif S[i] == 'x':
+            index = bisect_left(T, 'o')
+            if 'o' == T[0]:
+                index = 0
+            elif index == lenT:
+                continue
+            ans += lenT - index
+
     print(ans)
 
 

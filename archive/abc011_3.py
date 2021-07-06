@@ -69,16 +69,28 @@ def prime_factorization(n):
 
 
 def main():
-    a, b = map(int, input().split())
-    ans = 0
-    for i in range(a):
-        k = i + 1
-        x = math.ceil(a / k) * k
-        y = math.floor(b / k) * k
+    n = int(input())
+    ngList = [int(input()) for _ in range(3)]
 
-        if x < y and a <= x and y <= b:
-            ans = k
-    print(ans)
+    if n in ngList:
+        print("NO")
+        return
+    ans = 0
+    for _ in range(100):
+        swi = 0
+        for i in range(3):
+            if ans + 3 - i in ngList:
+                continue
+            ans += 3 - i
+            if ans >= n:
+                print("YES")
+                return
+            swi = 1
+            break
+        if swi == 0:
+            print("NO")
+            return
+    print("YNEOS"[(ans < n)::2])
 
 
 if __name__ == '__main__':

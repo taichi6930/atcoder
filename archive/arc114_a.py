@@ -69,16 +69,9 @@ def prime_factorization(n):
 
 
 def main():
-    a, b = map(int, input().split())
-    ans = 0
-    for i in range(a):
-        k = i + 1
-        x = math.ceil(a / k) * k
-        y = math.floor(b / k) * k
-
-        if x < y and a <= x and y <= b:
-            ans = k
-    print(ans)
+    n = int(input())
+    X = list(map(int, input().split()))
+    ans = 1
 
 
 if __name__ == '__main__':
