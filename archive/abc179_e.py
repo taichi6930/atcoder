@@ -69,32 +69,37 @@ def prime_factorization(n):
 
 
 def main():
-    n = int(input())
-    S = list(map(lambda x: int(x),
-                 list(str(n))))
-    SC = collections.Counter(S)
+    n, x, m = map(int, input().split())
+    aList = [x]
+    aNum = -1
+    ans = 0
 
-    for i in range(1, min(125, n // 8 + 1)):
-        T = list(map(lambda x: int(x), list(str(8 * i))))
-        TC = collections.Counter(T)
+    for i in range(n - 1):
+        # 元の値
+        An = aList[-1]
+        # Anの値
+        An1 = An ** 2 % m
 
-        if TC[0] > 0:
-            continue
+        if An1 in aList:
+            aNum = aList.index(An1)
+            a = An1
+            break
+        aList.append(An1)
+    # まず今まで求めたものを全て足す
+    ans += sum(aList)
 
-        swi = 1
+    if aNum != -1:
+        bList = aList[aNum:]
+        bListLen = len(bList)
 
-        for tc in TC:
-            if SC[tc] < TC[tc]:
-                swi = 0
-                break
+        # 繰り返し足し算するところを求める
+        k = (n - len(aList)) // (bListLen)
+        ans += sum(bList) * k
 
-        if swi == 0:
-            continue
+        l = n - len(aList) - bListLen * k
+        ans += sum(bList[0:l])
 
-        print("Yes")
-        return
-
-    print("No")
+    print(ans)
 
 
 if __name__ == '__main__':

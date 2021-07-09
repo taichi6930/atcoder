@@ -53,48 +53,24 @@ def prime_factorization(n):
     type:list
     """
     lis = []
-    for i in range(2, int(n ** 0.5) + 1):  # 割り算のTryは2から、平方根以下まで
+    for i in range(2, int(n ** 0.5) + 1):
         while True:
             if n % i == 0:
-                lis.append(i)  # 余り0なら素因数分解リストにappendする
-                n = n // i  # nの更新
+                lis.append(i)
+                n = n // i
 
             else:
                 break
 
-    if n > int(n ** 0.5):  # nがint(n**0.5) より大きなポイントでbreakしていたらそれをリストにappend 素数の時もこれ
+    if n > int(n ** 0.5):
         lis.append(n)
 
     return lis
 
 
 def main():
-    n = int(input())
-    S = list(map(lambda x: int(x),
-                 list(str(n))))
-    SC = collections.Counter(S)
-
-    for i in range(1, min(125, n // 8 + 1)):
-        T = list(map(lambda x: int(x), list(str(8 * i))))
-        TC = collections.Counter(T)
-
-        if TC[0] > 0:
-            continue
-
-        swi = 1
-
-        for tc in TC:
-            if SC[tc] < TC[tc]:
-                swi = 0
-                break
-
-        if swi == 0:
-            continue
-
-        print("Yes")
-        return
-
-    print("No")
+    a, b = map(int, input().split())
+    print(b - a - (0 if a * b > 0 else 1))
 
 
 if __name__ == '__main__':

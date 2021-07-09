@@ -51,13 +51,7 @@ def main():
     n = int(input())
     A = sorted(list(map(int, input().split())))
     ans = sum(list(map(lambda x: int(copysign(x ** 2, x)), A)))
-
-    k = 0
-
-    for i in range(1, n):
-        k = k * 2 + A[i - 1]
-        ans = (ans + k * A[i]) % mod2
-    print(ans % mod2)
+    print(n, A, ans)
 
 
 if __name__ == '__main__':

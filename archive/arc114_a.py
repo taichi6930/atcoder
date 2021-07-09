@@ -2,6 +2,7 @@ import collections
 import math
 from itertools import accumulate
 from bisect import bisect_left
+import pprint
 
 
 mod = 10 ** 9 + 7
@@ -53,16 +54,16 @@ def prime_factorization(n):
     type:list
     """
     lis = []
-    for i in range(2, int(n ** 0.5) + 1):  # 割り算のTryは2から、平方根以下まで
+    for i in range(2, int(n ** 0.5) + 1):
         while True:
             if n % i == 0:
-                lis.append(i)  # 余り0なら素因数分解リストにappendする
-                n = n // i  # nの更新
+                lis.append(i)
+                n = n // i
 
             else:
                 break
 
-    if n > int(n ** 0.5):  # nがint(n**0.5) より大きなポイントでbreakしていたらそれをリストにappend 素数の時もこれ
+    if n > int(n ** 0.5):
         lis.append(n)
 
     return lis
@@ -71,7 +72,8 @@ def prime_factorization(n):
 def main():
     n = int(input())
     X = list(map(int, input().split()))
-    ans = 1
+    pX = [prime_factorization(X[i]) for i in range(n)]
+    pprint.pprint(pX)
 
 
 if __name__ == '__main__':

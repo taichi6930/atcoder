@@ -70,31 +70,13 @@ def prime_factorization(n):
 
 def main():
     n = int(input())
-    S = list(map(lambda x: int(x),
-                 list(str(n))))
-    SC = collections.Counter(S)
+    S = list(input())
 
-    for i in range(1, min(125, n // 8 + 1)):
-        T = list(map(lambda x: int(x), list(str(8 * i))))
-        TC = collections.Counter(T)
+    C = collections.Counter(S)
 
-        if TC[0] > 0:
-            continue
-
-        swi = 1
-
-        for tc in TC:
-            if SC[tc] < TC[tc]:
-                swi = 0
-                break
-
-        if swi == 0:
-            continue
-
-        print("Yes")
-        return
-
-    print("No")
+    for i in range(n):
+        if C[S[n - i - 1]] == 1:
+            S.pop(n - i - 1)
 
 
 if __name__ == '__main__':
