@@ -68,6 +68,14 @@ def prime_factorization(n):
     return lis
 
 
+def str2intWithArray(Array):
+    return list(map(lambda x: int(x), Array))
+
+
+def int2strWithArray(Array):
+    return list(map(lambda x: str(x), Array))
+
+
 def main():
     pass
 

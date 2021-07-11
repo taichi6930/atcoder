@@ -68,31 +68,18 @@ def prime_factorization(n):
     return lis
 
 
-def cnt_step(Arr, x):
-    ans = 0
+def str2intWithArray(Array):
+    return list(map(lambda x: int(x), Array))
 
-    n = len(Arr)
 
-    for i in range(n):
-        minus = max(0, Arr[i] - x)
-
-        if minus == 0:
-            continue
-
-        ans += minus
-        Arr[i] -= minus
-        if i + 1 != n:
-            Arr[i + 1] -= minus
-    return ans
+def int2strWithArray(Array):
+    return list(map(lambda x: str(x), Array))
 
 
 def main():
-    n, x = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = [A[i] + A[i + 1] for i in range(n - 1)]
-    C = [B[n - 2 - j] for j in range(n - 1)]
-
-    print(min(int(cnt_step(B, x)), int(cnt_step(C, x))))
+    n = int(input())
+    print("".join(int2strWithArray(
+        [9 if n % 9 == 0 else n % 9] * ((n - 1) // 9 + 1))))
 
 
 if __name__ == '__main__':

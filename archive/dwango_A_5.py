@@ -8,7 +8,7 @@ def main():
     _ = int(input())
     A = list(map(int, input().split()))
     avgA = numpy.average(A)
-    B = list(map(lambda x: abs(x - avgA) ,A))
+    B = list(map(lambda x: abs(x - avgA), A))
     minB = min(B)
 
     print(B.index(minB))

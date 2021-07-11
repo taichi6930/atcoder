@@ -68,31 +68,35 @@ def prime_factorization(n):
     return lis
 
 
-def cnt_step(Arr, x):
-    ans = 0
+def str2intWithArray(Array):
+    return list(map(lambda x: int(x), Array))
 
-    n = len(Arr)
 
-    for i in range(n):
-        minus = max(0, Arr[i] - x)
-
-        if minus == 0:
-            continue
-
-        ans += minus
-        Arr[i] -= minus
-        if i + 1 != n:
-            Arr[i + 1] -= minus
-    return ans
+def int2strWithArray(Array):
+    return list(map(lambda x: str(x), Array))
 
 
 def main():
-    n, x = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = [A[i] + A[i + 1] for i in range(n - 1)]
-    C = [B[n - 2 - j] for j in range(n - 1)]
+    n = int(input())
+    s = [input() for _ in range(n)]
+    top = list(map(lambda x: x[0:3], s))
+    tail = list(map(lambda x: x[-3:], s))
 
-    print(min(int(cnt_step(B, x)), int(cnt_step(C, x))))
+    winS = []
+
+    for j in range(n):
+        if not tail[j] in top:
+            winS.append(s[j])
+            continue
+
+    for a in range(n):
+        ss = s[a]
+        if ss[0:3] == ss[-3:]:
+            print("Draw")
+        elif not ss[-3:] in top:
+            print("Takahashi")
+        else:
+            print("Aoki")
 
 
 if __name__ == '__main__':
