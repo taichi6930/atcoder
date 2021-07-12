@@ -77,24 +77,11 @@ def int2strWithArray(Array):
 
 
 def main():
-    A = [0 for _ in range(10 ** 5 + 1)]
+    a, b, c = map(int, input().split())
 
-    for i in range(1, 10 ** 5 + 1):
-        A[i] = A[i - 1]
-        if i % 2 == 0:
-            continue
-
-        if len(make_divisors(i)) != 2:
-            continue
-
-        if len(make_divisors((i + 1) // 2)) != 2:
-            continue
-        A[i] = A[i] + 1
-
-    q = int(input())
-    for i in range(q):
-        l, r = map(int, input().split())
-        print(A[r] - A[l - 1])
+    maxL = a + b + c
+    minL = max(0, a - b - c)
+    print((maxL + minL) * (maxL - minL) * math.pi)
 
 
 if __name__ == '__main__':

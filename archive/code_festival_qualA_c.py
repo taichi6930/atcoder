@@ -1,7 +1,6 @@
 import collections
 import math
-from itertools import accumulate  # 累積和を求めるときに使う
-from itertools import permutations  # 順列全探索で使う
+from itertools import accumulate
 from bisect import bisect_left
 
 
@@ -78,7 +77,11 @@ def int2strWithArray(Array):
 
 
 def main():
-    pass
+    a, b = map(int, input().split())
+
+    print(math.floor(b / 4) - math.ceil(a / 4)
+          - (math.floor(b / 100) - math.ceil(a / 100))
+          + math.floor(b / 400) - math.ceil(a / 400) + 1)
 
 
 if __name__ == '__main__':
