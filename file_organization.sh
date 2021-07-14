@@ -5,7 +5,9 @@ for filepath in $files; do
     -o ${filepath:2} = "makestr.txt" \
     -o ${filepath:2} = "makestr.py" \
     -o ${filepath:2} = "temp.py" \
-    -o ${filepath:2} = "file_organization.sh" ]; then
+    -o ${filepath:2} = "file_organization.sh"\
+    -o ${filepath:2} = "go_to_light_blue"\
+     ]; then
         continue;
     fi
     modifyfilepath="./archive/"${filepath:2}

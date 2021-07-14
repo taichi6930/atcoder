@@ -1,7 +1,7 @@
 import collections
-from collections import deque
 import math
-from itertools import accumulate
+from itertools import accumulate  # 累積和を求めるときに使う
+from itertools import permutations  # 順列全探索で使う
 from bisect import bisect_left
 
 
@@ -69,46 +69,20 @@ def prime_factorization(n):
     return lis
 
 
+def str2intWithArray(Array):
+    return list(map(lambda x: int(x), Array))
+
+
+def int2strWithArray(Array):
+    return list(map(lambda x: str(x), Array))
+
+
 def main():
-    S = list(input())
-    n = len(S)
-    T = deque()
-    swi = 1
-
-    for s in S:
-        if s == "R":
-            swi *= -1
-            continue
-
-        if swi == 1:
-            T.append(s)
-            continue
-
-        if swi == -1:
-            T.appendleft(s)
-            continue
-
-    if swi == -1:
-        T.reverse()
-    T = list(T)
-
-    cnt = 0
-    for i in range(10 ** 8):
-        if cnt + 1 >= len(T):
-            break
-        if T[cnt] != T[cnt + 1]:
-            cnt += 1
-            continue
-
-        T.pop(cnt + 1)
-        T.pop(cnt)
-
-        if cnt == 0:
-            cnt += 2
-            continue
-        cnt -= 1
-
-    print("".join(T))
+    n, m = map(int, input().split())
+    A = sorted(list(map(int, input().split())))
+    B = [0] * (n - m) + sorted(list(map(int, input().split())))
+    print("YES" if (sorted([A[i] - B[i]
+          for i in range(n)])[0] >= 0 and m <= n) else "NO")
 
 
 if __name__ == '__main__':

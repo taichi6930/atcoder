@@ -1,13 +1,4 @@
-import collections
 import math
-from itertools import accumulate
-from bisect import bisect_left
-import pprint
-
-
-mod = 10 ** 9 + 7
-alphaList = list("abcdefghijklmnopqrstuvwxyz")
-mod2 = 998244353
 
 
 def is_prime(n):
@@ -21,59 +12,41 @@ def is_prime(n):
     return True
 
 
-def make_divisors(n):
-    """
-    約数列挙を行う。
-
-    Parameters
-    ----------
-    n : int
-        約数を求めたい数
-
-    Returns
-    -------
-    divisors : [int]
-        約数が昇順に入った配列
-    """
-    lower_divisors, upper_divisors = [], []
-    i = 1
-    while i * i <= n:
-        if n % i == 0:
-            lower_divisors.append(i)
-            if i != n // i:
-                upper_divisors.append(n//i)
-        i += 1
-    divisors = lower_divisors + upper_divisors[::-1]
-    return divisors
-
-
-def prime_factorization(n):
-    """
-    task:prime factorization
-    return:prime
-    type:list
-    """
-    lis = []
-    for i in range(2, int(n ** 0.5) + 1):
-        while True:
-            if n % i == 0:
-                lis.append(i)
-                n = n // i
-
-            else:
-                break
-
-    if n > int(n ** 0.5):
-        lis.append(n)
-
-    return lis
+def is_nth_bit_set(num: int, n: int):
+    if num & (1 << n):
+        return True
+    return False
 
 
 def main():
+    ans = 1
+    primeList = []
+    for i in range(2, 51):
+        if is_prime(i):
+            primeList.append(i)
+            ans *= i
+
     n = int(input())
     X = list(map(int, input().split()))
-    pX = [prime_factorization(X[i]) for i in range(n)]
-    pprint.pprint(pX)
+
+    for j in range(2 ** len(primeList)):
+        a = 1
+        for k in range(len(primeList)):
+            if is_nth_bit_set(j, k):
+                a *= primeList[k]
+                if ans < a:
+                    break
+
+        if ans < a:
+            continue
+        swi = 1
+        for x in X:
+            if math.gcd(x, a) == 1:
+                swi = 0
+                break
+        if swi == 1:
+            ans = min(ans, a)
+    print(ans)
 
 
 if __name__ == '__main__':
