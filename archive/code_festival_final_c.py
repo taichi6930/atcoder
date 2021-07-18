@@ -1,6 +1,7 @@
 import collections
 import math
-from itertools import accumulate
+from itertools import accumulate  # 累積和を求めるときに使う
+from itertools import permutations  # 順列全探索で使う
 from bisect import bisect_left
 
 
@@ -68,17 +69,23 @@ def prime_factorization(n):
     return lis
 
 
+def str2intWithArray(Array):
+    return list(map(lambda x: int(x), Array))
+
+
+def int2strWithArray(Array):
+    return list(map(lambda x: str(x), Array))
+
+
 def main():
-    n = int(input())
-    A = list(map(int, input().split()))
-    B = []
-
-    for a in A:
-        B = B + make_divisors(a)
-
-    C = collections.Counter(B)
-
-    print(C)
+    A = int(input())
+    listA = str2intWithArray(list(reversed(str(A))))
+    ans = 0
+    c = 0
+    for i in range(len(listA)):
+        c = 1 if c == 0 else c * A
+        ans += c * listA[i]
+    print(ans)
 
 
 if __name__ == '__main__':

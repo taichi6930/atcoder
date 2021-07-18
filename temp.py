@@ -1,9 +1,10 @@
+from functools import reduce
+from operator import mul
 import collections
 import math
 from itertools import accumulate  # 累積和を求めるときに使う
 from itertools import permutations  # 順列全探索で使う
 from bisect import bisect_left
-
 
 mod = 10 ** 9 + 7
 alphaList = list("abcdefghijklmnopqrstuvwxyz")
@@ -75,6 +76,15 @@ def str2intWithArray(Array):
 
 def int2strWithArray(Array):
     return list(map(lambda x: str(x), Array))
+
+
+def cmb(n, r):
+    r = min(n-r, r)
+    if r == 0:
+        return 1
+    over = reduce(mul, range(n, n - r, -1))
+    under = reduce(mul, range(1, r + 1))
+    return over // under
 
 
 def main():

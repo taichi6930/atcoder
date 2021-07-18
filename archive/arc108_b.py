@@ -70,25 +70,17 @@ def prime_factorization(n):
 
 def main():
     n = int(input())
-    S = list(input())
-    T = []
+    S = input()
 
     ans = 0
     num = 0
 
-    # nが2以下であれば終了
-    if n <= 2:
-        print(0)
-        return
-
-    for i in range(n):
-        T.append(S[i])
-        if len(T) < 3:
-            continue
-        if "".join(T[len(T) - 3:]) == "fox":
-            T = T[0: len(T) - 3]
-
-    print(len(T))
+    for i in range(10 ** 10):
+        T = S.replace("fox", "")
+        if len(S) - len(T) == 0:
+            break
+        S = T
+    print(len(S))
 
 
 if __name__ == '__main__':
