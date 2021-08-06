@@ -1,8 +1,10 @@
+from functools import reduce
+from operator import mul
 import collections
 import math
-from itertools import accumulate
+from itertools import accumulate  # 累積和を求めるときに使う
+from itertools import permutations  # 順列全探索で使う
 from bisect import bisect_left
-from copy import deepcopy
 
 mod = 10 ** 9 + 7
 alphaList = list("abcdefghijklmnopqrstuvwxyz")
@@ -53,33 +55,56 @@ def prime_factorization(n):
     type:list
     """
     lis = []
-    for i in range(2, int(n ** 0.5) + 1):  # 割り算のTryは2から、平方根以下まで
+    for i in range(2, int(n ** 0.5) + 1):
         while True:
             if n % i == 0:
-                lis.append(i)  # 余り0なら素因数分解リストにappendする
-                n = n // i  # nの更新
+                lis.append(i)
+                n = n // i
 
             else:
                 break
 
-    if n > int(n ** 0.5):  # nがint(n**0.5) より大きなポイントでbreakしていたらそれをリストにappend 素数の時もこれ
+    if n > int(n ** 0.5):
         lis.append(n)
 
     return lis
 
 
+def str2intWithArray(Array):
+    return list(map(lambda x: int(x), Array))
+
+
+def int2strWithArray(Array):
+    return list(map(lambda x: str(x), Array))
+
+
+def cmb(n, r, m=None):
+    r = min(n-r, r)
+    if r == 0:
+        return 1
+    over = reduce(mul, range(n, n - r, -1))
+    under = reduce(mul, range(1, r + 1))
+    if m is None:
+        return over // under
+    return (over // under) % m
+
+
 def main():
     n = int(input())
-    A = [None] * n
-    ASum = 0
-    BSum = 0
+    A = [None for _ in range(n)]
+    B = [None for _ in range(n)]
+    TA = [None for _ in range(n)]
+
     for i in range(n):
         a, b = map(int, input().split())
-        ASum += a
-        BSum += b
         A[i] = a
-    Aacc = accumulate(sorted(A, reverse=True))
-    print(ASum, BSum, list(Aacc))
+        B[i] = b
+        TA[i] = a + b
+
+    ans = - sum(A)
+
+    for j in range(n):
+        
 
 
 if __name__ == '__main__':

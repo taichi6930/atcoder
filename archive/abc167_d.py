@@ -82,13 +82,13 @@ def main():
         if A[Alist[i]] in Alist:
             AlistStart = Alist.index(A[Alist[i]])
             Blist = Alist[AlistStart:]
-            print(Alist, Blist)
+            # print(Alist, Blist)
             # 既にここまでlen(Alist)だけ消化している
             # n - len(Alist)のうち、len(Blist)の倍数は消化される
             q = (k - len(Alist)) % len(Blist)
 
             # Blistのk番目を取得
-            print(Blist[q])
+            # print(Blist[q])
             return
             # Alistになければappend
         Alist.append(A[Alist[i]])

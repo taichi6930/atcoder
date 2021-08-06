@@ -88,19 +88,11 @@ def cmb(n, r):
 
 
 def main():
-    s = input()
-
-    # KIHがあるかどうか、indexの場所が0 or 1であるかどうか
-    # 0であれば、sの前にAを追加する
-    if s.index("KIH") == -1 or s.index("KIH") > 1:
-        print("NO")
+    S = input().replace("A", "")
+    if S == "KIHBR":
+        print("YES")
         return
-    if s.index("KIH") == 0:
-        s = "A" + s
-    if s.index("AKIHAB") == -1 or s.index("KIH") == -1:
-        print("NO")
-        return
-    
+    print("NO")
 
 
 if __name__ == '__main__':

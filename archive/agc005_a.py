@@ -1,9 +1,14 @@
+from functools import reduce
+from operator import mul
 import collections
 import math
-import random
-import time
+from itertools import accumulate  # 累積和を求めるときに使う
+from itertools import permutations  # 順列全探索で使う
+from bisect import bisect_left
 
+mod = 10 ** 9 + 7
 alphaList = list("abcdefghijklmnopqrstuvwxyz")
+mod2 = 998244353
 
 
 def is_prime(n):
@@ -17,29 +22,88 @@ def is_prime(n):
     return True
 
 
-def main():
-    S = ""
-    for i in range(200000):
-        S += ["S", "T"][random.randrange(2)]
-    # S = list(input())
-    S = list(S)
+def make_divisors(n):
+    """
+    約数列挙を行う。
 
-    start = time.time()
-    cnt = 0
-    for i in range(10 ** 9):
-        if cnt >= len(S) - 1:
+    Parameters
+    ----------
+    n : int
+        約数を求めたい数
+
+    Returns
+    -------
+    divisors : [int]
+        約数が昇順に入った配列
+    """
+    lower_divisors, upper_divisors = [], []
+    i = 1
+    while i * i <= n:
+        if n % i == 0:
+            lower_divisors.append(i)
+            if i != n // i:
+                upper_divisors.append(n//i)
+        i += 1
+    divisors = lower_divisors + upper_divisors[::-1]
+    return divisors
+
+
+def prime_factorization(n):
+    """
+    task:prime factorization
+    return:prime
+    type:list
+    """
+    lis = []
+    for i in range(2, int(n ** 0.5) + 1):
+        while True:
+            if n % i == 0:
+                lis.append(i)
+                n = n // i
+
+            else:
+                break
+
+    if n > int(n ** 0.5):
+        lis.append(n)
+
+    return lis
+
+
+def str2intWithArray(Array):
+    return list(map(lambda x: int(x), Array))
+
+
+def int2strWithArray(Array):
+    return list(map(lambda x: str(x), Array))
+
+
+def cmb(n, r):
+    r = min(n-r, r)
+    if r == 0:
+        return 1
+    over = reduce(mul, range(n, n - r, -1))
+    under = reduce(mul, range(1, r + 1))
+    return over // under
+
+
+def main():
+    X = list(input())
+    n = len(X)
+
+    ans = 0
+
+    for i in range(n):
+        if X[i] == "S":
+            ans = i * 2
             break
-        if "".join(S[cnt: cnt + 2]) == "ST":
-            S.pop(cnt + 1)
-            S.pop(cnt)
-            if cnt == 0:
-                continue
-            cnt -= 1
-            continue
-        cnt += 1
-    print(len(S))
-    finish = time.time()
-    print(finish - start)
+
+    for j in range(n):
+        if X[n - 1 - j] == "T":
+            ans = min(j * 2, ans)
+            break
+
+    print(ans)
 
 
 if __name__ == '__main__':

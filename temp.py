@@ -78,13 +78,15 @@ def int2strWithArray(Array):
     return list(map(lambda x: str(x), Array))
 
 
-def cmb(n, r):
+def cmb(n, r, m=None):
     r = min(n-r, r)
     if r == 0:
         return 1
     over = reduce(mul, range(n, n - r, -1))
     under = reduce(mul, range(1, r + 1))
-    return over // under
+    if m is None:
+        return over // under
+    return (over // under) % m
 
 
 def main():

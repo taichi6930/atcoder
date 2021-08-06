@@ -1,8 +1,10 @@
+from functools import reduce
+from operator import mul
 import collections
 import math
-from itertools import accumulate
+from itertools import accumulate  # 累積和を求めるときに使う
+from itertools import permutations  # 順列全探索で使う
 from bisect import bisect_left
-
 
 mod = 10 ** 9 + 7
 alphaList = list("abcdefghijklmnopqrstuvwxyz")
@@ -68,38 +70,30 @@ def prime_factorization(n):
     return lis
 
 
+def str2intWithArray(Array):
+    return list(map(lambda x: int(x), Array))
+
+
+def int2strWithArray(Array):
+    return list(map(lambda x: str(x), Array))
+
+
+def cmb(n, r, m=None):
+    r = min(n-r, r)
+    if r == 0:
+        return 1
+    over = reduce(mul, range(n, n - r, -1))
+    under = reduce(mul, range(1, r + 1))
+    if m is None:
+        return over // under
+    return (over // under) % m
+
+
 def main():
-    n, k = map(int, input().split())
-    ans = 0
-
-    # 1 <= a,b,c,d <= n
-    # (a + b) = k + (c + d)
-    # ab = k + cd
-    # 2<= ab,cd <= 2n
-    # この条件を満たす組み合わせを決める
-    # 2<= cd <= 2n - k
-
-    arr = []
-
-    for cd in range(2, min(2 * n + 1 - k, 2 * n + 1)):
-        ab = k + cd
-        if ab < 2 or 2 * n < ab:
-            continue
-
-        cnt = 1
-
-        if ab <= n + 1:
-            cnt *= ab - 1
-        else:
-            cnt *= 2 * n + 1 - ab
-
-        if cd <= n + 1:
-            cnt *= cd - 1
-        else:
-            cnt *= 2 * n + 1 - cd
-
-        ans += cnt
-    print(ans)
+    n = int(input())
+    A = sorted(list(map(int, input().split())))
+    B = list(accumulate(A))
+    print(B)
 
 
 if __name__ == '__main__':

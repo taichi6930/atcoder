@@ -1,10 +1,12 @@
+import numpy
+from functools import reduce
+from operator import mul
 import numpy as np
 import collections
 import math
 from itertools import accumulate
 from bisect import bisect_left
 from copy import deepcopy
-from scipy.special import comb
 
 mod = 10 ** 9 + 7
 alphaList = list("abcdefghijklmnopqrstuvwxyz")
@@ -53,21 +55,22 @@ def idx_of_the_nearest(list, num):
     return list[idx]
 
 
+def cmb(n, r):
+    r = min(n-r, r)
+    if r == 0:
+        return 1
+    over = reduce(mul, range(n, n - r, -1))
+    under = reduce(mul, range(1, r + 1))
+    return over // under
+
+
 def main():
     n = int(input())
     A = list(map(int, input().split()))
-    maxA = 0
-    maxq, maxr = 0, 0
-    for i in range(n):
-        q = A[i]
-        B = A[0: i] + A[i + 1:]
-        r = idx_of_the_nearest(B, q / 2)
-        ans = comb(q, r)
-        if maxA <= ans:
-            maxA = ans
-            maxq = q
-            maxr = r
-    print(maxq, maxr)
+    ans = 0
+
+    for i in range(n - 1):
+        
 
 
 if __name__ == '__main__':

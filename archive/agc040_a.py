@@ -27,5 +27,5 @@ for j in range(len(A) - 1):
     print(ans, A[j])
 
 ans += ((A[-1][0] + 1) * A[-1][0]) // 2
-
+print(ans, A[-1])
 print(ans)

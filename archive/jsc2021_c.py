@@ -1,8 +1,10 @@
+from functools import reduce
+from operator import mul
 import collections
 import math
-from itertools import accumulate
+from itertools import accumulate  # 累積和を求めるときに使う
+from itertools import permutations  # 順列全探索で使う
 from bisect import bisect_left
-
 
 mod = 10 ** 9 + 7
 alphaList = list("abcdefghijklmnopqrstuvwxyz")
@@ -53,31 +55,46 @@ def prime_factorization(n):
     type:list
     """
     lis = []
-    for i in range(2, int(n ** 0.5) + 1):  # 割り算のTryは2から、平方根以下まで
+    for i in range(2, int(n ** 0.5) + 1):
         while True:
             if n % i == 0:
-                lis.append(i)  # 余り0なら素因数分解リストにappendする
-                n = n // i  # nの更新
+                lis.append(i)
+                n = n // i
 
             else:
                 break
 
-    if n > int(n ** 0.5):  # nがint(n**0.5) より大きなポイントでbreakしていたらそれをリストにappend 素数の時もこれ
+    if n > int(n ** 0.5):
         lis.append(n)
 
     return lis
 
 
+def str2intWithArray(Array):
+    return list(map(lambda x: int(x), Array))
+
+
+def int2strWithArray(Array):
+    return list(map(lambda x: str(x), Array))
+
+
+def cmb(n, r):
+    r = min(n-r, r)
+    if r == 0:
+        return 1
+    over = reduce(mul, range(n, n - r, -1))
+    under = reduce(mul, range(1, r + 1))
+    return over // under
+
+
 def main():
     a, b = map(int, input().split())
-    ans = 0
-    for i in range(a):
-        k = i + 1
-        x = math.ceil(a / k) * k
-        y = math.floor(b / k) * k
+    ans = 1
 
-        if x < y and a <= x and y <= b:
-            ans = k
+    for i in range(1, a + 1):
+        if math.floor(b / i) * i <= math.ceil(a / i) * i:
+            continue
+        ans = i
     print(ans)
 
 

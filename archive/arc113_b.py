@@ -1,8 +1,10 @@
+from functools import reduce
+from operator import mul
 import collections
 import math
-from itertools import accumulate
+from itertools import accumulate  # 累積和を求めるときに使う
+from itertools import permutations  # 順列全探索で使う
 from bisect import bisect_left
-from copy import deepcopy
 
 mod = 10 ** 9 + 7
 alphaList = list("abcdefghijklmnopqrstuvwxyz")
@@ -68,20 +70,44 @@ def prime_factorization(n):
     return lis
 
 
+def str2intWithArray(Array):
+    return list(map(lambda x: int(x), Array))
+
+
+def int2strWithArray(Array):
+    return list(map(lambda x: str(x), Array))
+
+
+def cmb(n, r):
+    r = min(n-r, r)
+    if r == 0:
+        return 1
+    over = reduce(mul, range(n, n - r, -1))
+    under = reduce(mul, range(1, r + 1))
+    return over // under
+
+
 def main():
     a, b, c = map(int, input().split())
     Z = [0, 1, 5, 6]
 
-    #　そもそも最初の段階で0であれば終了
+    #　そもそも最初の段階でZの範囲内であれば終了
     if a % 10 in Z:
         print(a % 10)
         return
 
     A = [1]
+    B = [1]
 
-    for i in range(10):
+    for i in range(b):
         k = (A[i] * a) % 10
-        # if k in A:
+        if k in A:
+            l = A.index(k)
+            lenA = len(A)
+            A = A[l:]
+            b -= lenA - 1
+            print(k, l, A, b)
+            break
 
         A.append(k)
 
