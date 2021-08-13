@@ -90,7 +90,7 @@ def cmb(n, r, m=None):
 
 
 def main():
-    pass
+    print(input() * 2)
 
 
 if __name__ == '__main__':
