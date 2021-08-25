@@ -1,4 +1,6 @@
 import datetime
+from functools import reduce
+from operator import mul
 import collections
 import math
 from itertools import accumulate  # 累積和を求めるときに使う
@@ -78,9 +80,6 @@ def int2strWithArray(Array):
 
 
 def cmb(n, r, m=None):
-    from functools import reduce
-    from operator import mul
-
     r = min(n-r, r)
     if r == 0:
         return 1
@@ -92,7 +91,8 @@ def cmb(n, r, m=None):
 
 
 def main():
-    pass
+    n = int(input())
+    S = str2intWithArray(list(input()))
 
 
 if __name__ == '__main__':

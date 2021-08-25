@@ -1,13 +1,5 @@
-import datetime
 import collections
 import math
-from itertools import accumulate  # 累積和を求めるときに使う
-from itertools import permutations  # 順列全探索で使う
-from bisect import bisect_left
-
-mod = 10 ** 9 + 7
-alphaList = list("abcdefghijklmnopqrstuvwxyz")
-mod2 = 998244353
 
 
 def is_prime(n):
@@ -69,30 +61,34 @@ def prime_factorization(n):
     return lis
 
 
-def str2intWithArray(Array):
-    return list(map(lambda x: int(x), Array))
-
-
-def int2strWithArray(Array):
-    return list(map(lambda x: str(x), Array))
-
-
-def cmb(n, r, m=None):
-    from functools import reduce
-    from operator import mul
-
-    r = min(n-r, r)
-    if r == 0:
-        return 1
-    over = reduce(mul, range(n, n - r, -1))
-    under = reduce(mul, range(1, r + 1))
-    if m is None:
-        return over // under
-    return (over // under) % m
-
-
 def main():
-    pass
+    n, m = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    B = set()
+
+    for a in A:
+        B |= set(make_divisors(a))
+    B = list(B)
+    C = collections.deque([1])
+    for i in range(2, m + 1):
+        if i in B:
+            continue
+        if not(is_prime(i)):
+            D = set(prime_factorization(i))
+            if len(D) == 1:
+                continue
+            swi = False
+            for d in D:
+                if not(d in C):
+                    swi = True
+                    break
+            if swi:
+                continue
+        C.append(i)
+    print(len(C))
+    for c in C:
+        print(c)
 
 
 if __name__ == '__main__':

@@ -1,3 +1,4 @@
+from pprint import pprint
 import datetime
 import collections
 import math
@@ -92,7 +93,27 @@ def cmb(n, r, m=None):
 
 
 def main():
-    pass
+    n = int(input())
+    S = [list(input()) for _ in range(n)]
+    T = [['#' for _ in range(2 * n - 1)] for _ in range(n - 1)] + [S[-1]]
+
+    for i in range(n - 1):
+        a = n - i - 2
+        for j in range(2 * n - 1):
+            if S[a][j] == '.':
+                T[a][j] = '.'
+                continue
+            if S[a][j] == 'X':
+                T[a][j] = 'X'
+                continue
+            if 'X' in S[a + 1][max(0, j - 1):min(2 * n, j + 2)]:
+                T[a][j] = 'X'
+                continue
+
+        S[a] = T[a]
+
+    for k in range(n):
+        print(''.join(T[k]))
 
 
 if __name__ == '__main__':

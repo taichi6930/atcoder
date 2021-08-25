@@ -92,7 +92,10 @@ def cmb(n, r, m=None):
 
 
 def main():
-    pass
+    n = int(input())
+    A = list(map(int, input().split()))
+
+    
 
 
 if __name__ == '__main__':
