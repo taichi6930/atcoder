@@ -1,13 +1,9 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    n = int(readline().rstrip())
-    xyuList = [list(map(str, readline().rstrip().split())) for _ in range(n)]
+    n = int(input())
+    xyuList = [list(map(str,  input().split())) for _ in range(n)]
     for i in range(n - 1):
         xyuI = xyuList[i]
         for j in range(i+1, n):

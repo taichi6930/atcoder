@@ -1,13 +1,9 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    n = int(readline().rstrip())
-    A = list(map(int, readline().rstrip().split()))
+    n = int(input())
+    A = list(map(int,  input().split()))
     sumA = 0
     money = 1000
     for i in range(n - 1):

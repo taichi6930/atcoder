@@ -1,10 +1,5 @@
-import collections
-import sys
-readline = sys.stdin.readline
-
-
 def main():
-    x = int(readline().rstrip())
+    x = int(input())
     y = 100
     num = 0
     while 10 ** 18 >= y:

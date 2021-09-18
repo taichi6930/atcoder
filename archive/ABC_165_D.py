@@ -1,10 +1,8 @@
 import math
-import sys
-readline = sys.stdin.readline
 
 
 def main():
-    a, b, n = map(int, readline().rstrip().split())
+    a, b, n = map(int,  input().split())
     maxt = 0
     for x in range(n):
         maxt = max(maxt, math.floor(a * (x + 1) / b) -

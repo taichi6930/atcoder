@@ -1,10 +1,5 @@
-import math
-import sys
-readline = sys.stdin.readline
-
-
 def main():
-    t = readline().rstrip()
+    t = input()
     print(t.replace("?", "D"))
 
 

@@ -1,11 +1,9 @@
 import collections
-import sys
-readline = sys.stdin.readline
 
 
 def main():
-    n = int(readline().rstrip())
-    A = list(map(int, readline().rstrip().split()))
+    n = int(input())
+    A = list(map(int,  input().split()))
     ans = 0
     c = collections.Counter()
 

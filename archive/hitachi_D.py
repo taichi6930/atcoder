@@ -1,7 +1,3 @@
-import time
-import sys
-input = sys.stdin.readline
-
 n, t = map(int, input().split())
 
 listN = [list(map(int, input().split())) for _ in range(n)]

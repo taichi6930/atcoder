@@ -1,10 +1,13 @@
-
 def main():
     s, t = map(str, input().split())
-
-    s = int(s[0]) if 'F' in list(s) else -int(s[1]) + 1
-    t = int(t[0]) if 'F' in list(t) else -int(t[1]) + 1
-
+    if 'B' in s:
+        s = - int(s[1]) + 1
+    else:
+        s = int(s[0])
+    if 'B' in t:
+        t = - int(t[1]) + 1
+    else:
+        t = int(t[0])
     print(abs(s - t))
 
 

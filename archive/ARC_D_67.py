@@ -1,13 +1,9 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    n, a, b = map(int, readline().rstrip().split())
-    x = list(map(int, readline().rstrip().split()))
+    n, a, b = map(int,  input().split())
+    x = list(map(int,  input().split()))
     sumX = 0
     for i in range(n-1):
         sumX += min(b, a * (x[i + 1] - x[i]))

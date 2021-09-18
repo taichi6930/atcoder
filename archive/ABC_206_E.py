@@ -1,7 +1,3 @@
-import math
-import collections
-
-
 def main():
     l, r = map(int, input().split())
     if r == 1:
@@ -13,6 +9,9 @@ def main():
             if i * j > r:
                 break
             math.gcd()
+import math
+
+
 
 
 if __name__ == '__main__':

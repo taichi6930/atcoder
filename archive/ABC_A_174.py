@@ -1,6 +1,4 @@
 
-import collections
-
 
 def main():
     x = int(input())

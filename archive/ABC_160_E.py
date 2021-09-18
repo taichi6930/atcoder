@@ -1,11 +1,6 @@
-import collections
-import sys
-readline = sys.stdin.readline
-
-
 def main():
-    k, n = map(int, readline().rstrip().split())
-    A = list(map(int, readline().rstrip().split()))
+    k, n = map(int,  input().split())
+    A = list(map(int,  input().split()))
     minA = 10 ** 7
 
     for i in range(n):

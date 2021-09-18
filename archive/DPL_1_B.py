@@ -2,11 +2,9 @@ from pprint import pprint
 import datetime
 from functools import reduce
 from operator import mul
-import collections
 import math
 from itertools import accumulate  # 累積和を求めるときに使う
 from itertools import permutations  # 順列全探索で使う
-from bisect import bisect_left
 
 
 def main():

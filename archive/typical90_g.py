@@ -1,9 +1,7 @@
 from bisect import bisect_left
-
 n = int(input())
 A = sorted(list(map(int, input().split())))
 q = int(input())
-
 num = 0
 for i in range(q):
     b = int(input())

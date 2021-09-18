@@ -1,9 +1,4 @@
 import math
-import sys
-import collections
-import bisect
-
-
 def main():
     n = int(input())
     a, b = map(int, input().split())

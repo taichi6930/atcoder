@@ -1,12 +1,9 @@
-import math
-import sys
 from collections import Counter
-readline = sys.stdin.readline
 
 
 def main():
-    n, k = map(int, readline().rstrip().split())
-    a = list(map(int, readline().rstrip().split()))
+    n, k = map(int,  input().split())
+    a = list(map(int,  input().split()))
     c = Counter(a)
     print(sum(sorted(c.values(), reverse=True)[k: len(c)]))
 

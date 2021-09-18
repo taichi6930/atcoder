@@ -1,14 +1,10 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    n, m, k = map(int, readline().rstrip().split())
-    A = list(map(int, readline().rstrip().split()))
-    B = list(map(int, readline().rstrip().split()))
+    n, m, k = map(int,  input().split())
+    A = list(map(int,  input().split()))
+    B = list(map(int,  input().split()))
 
     a, b = [0], [0]
     for i in range(n):

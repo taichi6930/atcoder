@@ -1,12 +1,8 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    n, m = map(int, readline().rstrip().split())
+    n, m = map(int,  input().split())
     print(abs((m - 2) * (n - 2)))
 
 

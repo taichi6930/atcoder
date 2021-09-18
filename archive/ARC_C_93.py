@@ -1,12 +1,6 @@
-import math
-import sys
-import bisect
-readline = sys.stdin.readline
-
-
 def main():
-    n = int(readline().rstrip())
-    A = [0] + list(map(int, readline().rstrip().split())) + [0]
+    n = int(input())
+    A = [0] + list(map(int,  input().split())) + [0]
     sumA = 0
     for i in range(n+1):
         sumA += abs(A[i+1] - A[i])

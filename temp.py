@@ -4,6 +4,7 @@ import math
 from itertools import accumulate  # 累積和を求めるときに使う
 from itertools import permutations  # 順列全探索で使う
 from bisect import bisect_left
+from pprint import pprint
 
 mod = 10 ** 9 + 7
 alphaList = list("abcdefghijklmnopqrstuvwxyz")
@@ -11,6 +12,19 @@ mod2 = 998244353
 
 
 def is_prime(n):
+    """
+    数字が素数かどうかを判定する
+
+    Parameters
+    ----------
+    n : int
+        素数かどうかを求めたい数
+
+    Returns
+    -------
+    boolean
+        素数であればTrue
+    """
     if n == 1:
         return False
 
@@ -47,7 +61,7 @@ def make_divisors(n):
     return divisors
 
 
-def prime_factorization(n):
+def prime_factorization(n):  # 素因数分解を行う
     """
     task:prime factorization
     return:prime
@@ -69,15 +83,15 @@ def prime_factorization(n):
     return lis
 
 
-def str2intWithArray(Array):
+def str2intWithArray(Array):  # 文字の配列を数字の配列に変換する
     return list(map(lambda x: int(x), Array))
 
 
-def int2strWithArray(Array):
+def int2strWithArray(Array):  # 数字の配列を文字の配列に変換する
     return list(map(lambda x: str(x), Array))
 
 
-def cmb(n, r, m=None):
+def cmb(n, r, m=None):  # 組み合わせ計算
     from functools import reduce
     from operator import mul
 
@@ -89,6 +103,21 @@ def cmb(n, r, m=None):
     if m is None:
         return over // under
     return (over // under) % m
+
+
+# 等差数列の和（初項、末項、公差）
+def get_sum_of_arithmetic_progressions(n, a, l=None, d=None):
+    try:
+        if (d is not None and l is not None):
+            raise NameError('d is not None and l is not None')
+        if (d is None and l is None):
+            raise NameError('d is None and l is None')
+        if l is not None:
+            return (a + l) * n // 2
+        return (2 * a + (n - 1) * d) * n // 2
+    except NameError as e:
+        print(e)
+        exit()
 
 
 def main():

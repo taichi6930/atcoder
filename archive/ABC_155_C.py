@@ -1,11 +1,6 @@
-import math
-import sys
-readline = sys.stdin.readline
-
-
 def main():
-    n = int(readline().rstrip())
-    S = [readline().rstrip() for _ in range(n)]
+    n = int(input())
+    S = [input() for _ in range(n)]
     print(S)
 
 

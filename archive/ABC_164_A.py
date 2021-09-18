@@ -1,10 +1,5 @@
-import math
-import sys
-readline = sys.stdin.readline
-
-
 def main():
-    s, w = map(int, readline().rstrip().split())
+    s, w = map(int,  input().split())
     print("unsafe" if s <= w else "safe")
 
 

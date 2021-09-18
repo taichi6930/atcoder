@@ -1,12 +1,8 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    [h, w, n] = [int(readline().rstrip()) for _ in range(3)]
+    [h, w, n] = [int(input()) for _ in range(3)]
     print(math.ceil(n/max(h, w)))
 
 

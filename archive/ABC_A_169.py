@@ -1,9 +1,5 @@
-import sys
-readline = sys.stdin.readline
-
-
 def main():
-    a, b = map(int, readline().rstrip().split())
+    a, b = map(int,  input().split())
     print(a * b)
 
 

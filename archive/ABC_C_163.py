@@ -1,12 +1,6 @@
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
-
-
 def main():
-    n = int(readline().rstrip())
-    aList = sorted(list(map(int, readline().rstrip().split())))
+    n = int(input())
+    aList = sorted(list(map(int,  input().split())))
     z = [0] * n
     for a in aList:
         z[a-1] += 1

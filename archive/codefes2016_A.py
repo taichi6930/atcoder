@@ -1,5 +1,3 @@
-import collections
-
 
 def main():
     s = list(input())

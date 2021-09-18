@@ -1,11 +1,5 @@
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
-
-
 def main():
-    n = list(readline().rstrip()[::-1])
+    n = list(input()[::-1])
     gu = n[1::2]
     ki = n[0::2]
     for g in range(len(gu)):

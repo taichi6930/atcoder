@@ -1,5 +1,4 @@
 import collections
-
 n = int(input())
 nList = []
 

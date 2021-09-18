@@ -1,14 +1,10 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    n, q = map(int, readline().rstrip().split())
-    s = readline().rstrip()
-    LRList = [list(map(int, readline().rstrip().split())) for _ in range(q)]
+    n, q = map(int,  input().split())
+    s = input()
+    LRList = [list(map(int,  input().split())) for _ in range(q)]
     sumAC = 0
     ACList = [0] * (n)
     for i in range(1, n):

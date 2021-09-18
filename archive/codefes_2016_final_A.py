@@ -1,5 +1,3 @@
-import collections
-
 
 def main():
     aList = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

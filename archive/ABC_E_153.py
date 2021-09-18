@@ -1,13 +1,9 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    h, n = map(int, readline().rstrip().split())
-    abList = [map(int, readline().rstrip().split()) for _ in range(n)]
+    h, n = map(int,  input().split())
+    abList = [map(int,  input().split()) for _ in range(n)]
     A = [1] * n
 
 

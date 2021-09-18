@@ -1,16 +1,12 @@
-import math
-import sys
 import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    n = int(readline().rstrip())
-    A = list(map(int, readline().rstrip().split()))
+    n = int(input())
+    A = list(map(int,  input().split()))
     counter = collections.Counter(A)
-    q = int(readline().rstrip())
-    BCList = [list(map(int, readline().rstrip().split())) for _ in range(q)]
+    q = int(input())
+    BCList = [list(map(int,  input().split())) for _ in range(q)]
     aList = [0] * (10**5 + 10)
     sumA = sum(A)
     for i in range(n):

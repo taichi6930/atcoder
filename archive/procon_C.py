@@ -1,11 +1,5 @@
-import math
-import sys
-import bisect
-readline = sys.stdin.readline
-
-
 def main():
-    k, a, b = map(int, readline().rstrip().split())
+    k, a, b = map(int,  input().split())
     if b <= a:
         print(2 ** (k - 1))
         return

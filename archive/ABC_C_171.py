@@ -1,11 +1,6 @@
-import math
-import sys
-readline = sys.stdin.readline
-
-
 def main():
     alpha = 'abcdefghijklmnopqrstuvwxyz'
-    n = int(readline().rstrip())
+    n = int(input())
     arr = []
     a = n
     for i in range(100):

@@ -1,11 +1,6 @@
-import math
-import sys
-readline = sys.stdin.readline
-
-
 def main():
     cnt = 0
-    n = int(readline().rstrip())
+    n = int(input())
 
     print(cnt)
 

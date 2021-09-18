@@ -1,11 +1,6 @@
-import math
-import sys
-readline = sys.stdin.readline
-
-
 def main():
-    n = int(readline().rstrip())
-    aList = list(map(int, readline().rstrip().split()))
+    n = int(input())
+    aList = list(map(int,  input().split()))
     ans = 1
 
     if 0 in aList:

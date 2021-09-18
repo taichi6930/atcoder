@@ -1,9 +1,3 @@
-import math
-import sys
-import collections
-import bisect
-
-
 def main():
     h, w = map(int, input().split())
     hw = [["."] * (w + 2)] + [0] * h + [["."] * (w + 2)]

@@ -1,11 +1,5 @@
-import math
-import sys
-from collections import Counter
-readline = sys.stdin.readline
-
-
 def main():
-    n = int(readline().rstrip())
+    n = int(input())
     while n > 0:
         n -= 1000
     print(-n)

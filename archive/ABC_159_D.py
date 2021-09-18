@@ -1,12 +1,7 @@
-import math
-import sys
-readline = sys.stdin.readline
-
-
 def main():
     # input
-    n = int(readline().rstrip())
-    A = list(map(int, readline().rstrip().split()))
+    n = int(input())
+    A = list(map(int,  input().split()))
     B = [0] * n
 
     for a in A:

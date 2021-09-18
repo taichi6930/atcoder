@@ -1,7 +1,5 @@
 import math
 import numpy
-import sys
-readline = sys.stdin.readline
 
 
 def main():

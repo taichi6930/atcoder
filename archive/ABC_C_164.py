@@ -1,12 +1,8 @@
-import sys
-readline = sys.stdin.readline
-
-
 def main():
-    n = int(readline().rstrip())
+    n = int(input())
     sList = [""] * n
     for i in range(n):
-        sList[i] = readline().rstrip()
+        sList[i] = input()
     print(len(set(sList)))
 
 

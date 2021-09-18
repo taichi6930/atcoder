@@ -1,5 +1,4 @@
 import time
-import sys
 
 # nを取得
 n = int(input())

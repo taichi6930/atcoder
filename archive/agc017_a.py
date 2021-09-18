@@ -1,6 +1,6 @@
+import collections
 from functools import reduce
 from operator import mul
-import collections
 
 
 def cmb(n, r):
@@ -16,7 +16,6 @@ n, p = map(int, input().split())
 A = list(map(int, input().split()))
 B = [A[i] % 2 for i in range(n)]
 C = collections.Counter(B)
-
 ans = 0
 for i in range(n):
     k = C[1] - i * 2 - p

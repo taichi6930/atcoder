@@ -1,14 +1,10 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    a, v = map(int, readline().rstrip().split())
-    b, w = map(int, readline().rstrip().split())
-    t = int(readline().rstrip())
+    a, v = map(int,  input().split())
+    b, w = map(int,  input().split())
+    t = int(input())
     if v <= w:
         print('NO')
         return

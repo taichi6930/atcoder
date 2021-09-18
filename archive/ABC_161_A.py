@@ -1,10 +1,5 @@
-import math
-import sys
-readline = sys.stdin.readline
-
-
 def main():
-    a, b, c = map(int, readline().rstrip().split())
+    a, b, c = map(int,  input().split())
     print(c, a, b)
 
 

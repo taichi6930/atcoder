@@ -1,5 +1,4 @@
 import collections
-
 n = int(input())
 [a, b, c] = [list(map(int, input().split())) for _ in range(3)]
 

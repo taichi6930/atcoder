@@ -1,6 +1,4 @@
 import collections
-
-
 def main():
     _ = int(input())
     V = list(map(int, input().split()))

@@ -1,10 +1,8 @@
-import sys
 import math
-readline = sys.stdin.readline
 
 
 def main():
-    n = int(readline().rstrip())
+    n = int(input())
     allSum = n * (n + 1) // 2
     threeNum = math.floor(n / 3)
     threeSum = 3 * threeNum * (threeNum + 1) // 2

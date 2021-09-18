@@ -1,11 +1,5 @@
-import math
-import sys
-from collections import Counter
-readline = sys.stdin.readline
-
-
 def main():
-    s = readline().rstrip()
+    s = input()
     print('A' if s.isupper() else 'a')
 
 

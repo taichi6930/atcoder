@@ -1,13 +1,9 @@
-import math
-import sys
 import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    n = int(readline().rstrip())
-    S = [readline().rstrip() for _ in range(n)]
+    n = int(input())
+    S = [input() for _ in range(n)]
     c = collections.Counter(S)
     keys = sorted(c.keys())
     maxS = c.most_common()[0][1]

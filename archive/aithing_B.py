@@ -1,11 +1,6 @@
-import math
-import sys
-readline = sys.stdin.readline
-
-
 def main():
-    n = int(readline().rstrip())
-    A = list(map(int, readline().rstrip().split()))
+    n = int(input())
+    A = list(map(int,  input().split()))
     cnt = 0
     for a in range(n):
         if ((a + 1) * A[a]) % 2 == 1:

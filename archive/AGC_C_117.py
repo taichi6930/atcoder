@@ -1,9 +1,3 @@
-import math
-import sys
-import collections
-import bisect
-
-
 def main():
     n, m = map(int, input().split())
     x = sorted(list(map(int, input().split())))

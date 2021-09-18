@@ -1,12 +1,8 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    n = int(readline().rstrip())
+    n = int(input())
     a = [0] * 10100
     for i in range(1, 105):
         for j in range(1, 105):

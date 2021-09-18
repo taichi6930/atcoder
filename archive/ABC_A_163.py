@@ -1,11 +1,8 @@
 import math
-import sys
-from collections import Counter
-readline = sys.stdin.readline
 
 
 def main():
-    r = int(readline().rstrip())
+    r = int(input())
     print(2 * r * math.pi)
 
 

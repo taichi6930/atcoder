@@ -7,7 +7,7 @@ for filepath in $files; do
     -o ${filepath:2} = "temp.py" \
     -o ${filepath:2} = "file_organization.sh"\
     -o ${filepath:2} = "go_to_light_blue"\
-     ]; then
+        ]; then
         continue;
     fi
     modifyfilepath="./archive/"${filepath:2}

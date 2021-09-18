@@ -1,11 +1,5 @@
-import math
-import sys
-from collections import Counter
-readline = sys.stdin.readline
-
-
 def main():
-    l = int(readline().rstrip())
+    l = int(input())
     print((l/3)**3)
 
 

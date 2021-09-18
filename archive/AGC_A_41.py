@@ -1,11 +1,5 @@
-import math
-import sys
-import bisect
-readline = sys.stdin.readline
-
-
 def main():
-    n, a, b = map(int, readline().rstrip().split())
+    n, a, b = map(int,  input().split())
     if (b - a) % 2 == 0:
         print((b - a) // 2)
         return

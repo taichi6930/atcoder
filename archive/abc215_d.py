@@ -1,5 +1,5 @@
-import collections
 import math
+import collections
 
 
 def is_prime(n):

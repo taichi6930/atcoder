@@ -1,8 +1,3 @@
-import math
-import sys
-readline = sys.stdin.readline
-
-
 def main():
     n = int(input())
     A = list(map(int, input().split()))

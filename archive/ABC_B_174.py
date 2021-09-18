@@ -1,6 +1,4 @@
 
-import collections
-
 
 def main():
     n, d = map(int, input().split())

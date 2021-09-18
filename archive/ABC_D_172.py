@@ -1,12 +1,8 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():  # 約数の個数
-    N = int(readline().rstrip())
+    N = int(input())
     ans = 0
     for i in range(1, N+1):
         n = N // i

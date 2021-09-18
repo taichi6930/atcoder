@@ -1,10 +1,5 @@
-import math
-import sys
-readline = sys.stdin.readline
-
-
 def main():
-    x = int(readline().rstrip())
+    x = int(input())
     ans = x // 100
     if ans == 0:
         print(0)

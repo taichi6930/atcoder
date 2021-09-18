@@ -1,10 +1,5 @@
-import math
-import sys
-readline = sys.stdin.readline
-
-
 def main():
-    x = int(readline().rstrip())
+    x = int(input())
     a, b, c = 0, 0, 1
 
     while a < 1000:

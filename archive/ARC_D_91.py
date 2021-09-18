@@ -1,12 +1,8 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    n, k = map(int, readline().rstrip().split())
+    n, k = map(int,  input().split())
 
 
 if __name__ == '__main__':

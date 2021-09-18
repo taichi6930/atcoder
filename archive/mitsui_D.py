@@ -1,14 +1,8 @@
-import math
-import sys
-import collections
-import bisect
-import sympy
-readline = sys.stdin.readline
 
 
 def main():
-    n = int(readline().rstrip())
-    s = readline()
+    n = int(input())
+    s = input()
     cnt = 0
     for i in range(1000):
         x = str(i).zfill(3)

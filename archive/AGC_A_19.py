@@ -1,5 +1,3 @@
-import collections
-
 
 def main():
     q, h, s, d = map(int, input().split())

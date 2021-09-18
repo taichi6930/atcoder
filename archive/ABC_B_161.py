@@ -1,11 +1,6 @@
-import math
-import sys
-readline = sys.stdin.readline
-
-
 def main():
-    n, m = map(int, readline().rstrip().split())
-    aList = sorted(list(map(int, readline().rstrip().split())), reverse=True)
+    n, m = map(int,  input().split())
+    aList = sorted(list(map(int,  input().split())), reverse=True)
     aSum = sum(aList)
     mLine = aSum / (4 * m)
     print("Yes" if aList[m - 1] >= mLine else "No")

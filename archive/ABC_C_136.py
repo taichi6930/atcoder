@@ -1,15 +1,9 @@
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
-
-
 def main():
-    n = int(readline().rstrip())
+    n = int(input())
     if n == 1:
         print("Yes")
         return
-    h = list(map(int, readline().rstrip().split()))
+    h = list(map(int,  input().split()))
     for i in range(n - 1):
         right = h[n - i - 1]
         left = h[n - i - 2]

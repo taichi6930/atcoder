@@ -1,7 +1,5 @@
-import sys
 import math
 import time
-readline = sys.stdin.readline
 
 
 def main():

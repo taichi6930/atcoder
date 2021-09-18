@@ -1,12 +1,8 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    [n, s, k] = [str(readline().rstrip()) for _ in range(3)]
+    [n, s, k] = [str(input()) for _ in range(3)]
     s = list(s)
     strS = ""
     target = s[int(k) - 1]

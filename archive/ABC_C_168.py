@@ -1,10 +1,8 @@
-import sys
 import math
-readline = sys.stdin.readline
 
 
 def main():
-    a, b, h, m = map(int, readline().rstrip().split())
+    a, b, h, m = map(int,  input().split())
     pi = math.pi
     aArg = (60 * h + m) * pi / 360
     bArg = m * pi / 30

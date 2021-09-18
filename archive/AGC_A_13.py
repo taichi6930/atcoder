@@ -1,12 +1,6 @@
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
-
-
 def main():
-    n = int(readline().rstrip())
-    A = list(map(int, readline().rstrip().split()))
+    n = int(input())
+    A = list(map(int,  input().split()))
 
     diff = 0
     cnt = 1

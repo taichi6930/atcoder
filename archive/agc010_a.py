@@ -1,5 +1,4 @@
 import collections
-
 from math import copysign
 
 

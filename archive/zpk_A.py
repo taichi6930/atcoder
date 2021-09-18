@@ -1,8 +1,3 @@
-import sys
-import collections
-import bisect
-
-
 def main():
     n = int(input())
     print((int(input()) - 1)//2)

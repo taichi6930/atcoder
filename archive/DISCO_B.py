@@ -1,8 +1,3 @@
-import sys
-import collections
-import bisect
-
-
 def main():
     n = int(input())
     AList = list(map(int, input().split()))

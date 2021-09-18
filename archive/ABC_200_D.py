@@ -1,5 +1,4 @@
 import collections
-
 n = int(input())
 A = list(map(int, input().split()))
 B = [None] * n

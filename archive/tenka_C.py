@@ -1,9 +1,4 @@
 import math
-import sys
-import collections
-import bisect
-
-
 def main():
     n = int(input())
     s = [0] + list(input()) + [0]

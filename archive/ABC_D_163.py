@@ -1,12 +1,8 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    n, a, b = map(int, readline().rstrip().split())
+    n, a, b = map(int,  input().split())
     mod = 10 ** 9 + 7
 
     ans = pow(2, n, mod) - 1

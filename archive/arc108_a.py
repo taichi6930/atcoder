@@ -1,25 +1,3 @@
-import collections
-import math
-from itertools import accumulate
-from bisect import bisect_left
-from copy import deepcopy
-
-mod = 10 ** 9 + 7
-alphaList = list("abcdefghijklmnopqrstuvwxyz")
-mod2 = 998244353
-
-
-def is_prime(n):
-    if n == 1:
-        return False
-
-    for k in range(2, int(math.sqrt(n)) + 1):
-        if n % k == 0:
-            return False
-
-    return True
-
-
 def make_divisors(n):
     """
     約数列挙を行う。

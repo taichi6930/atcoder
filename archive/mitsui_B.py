@@ -1,10 +1,8 @@
 import math
-import sys
-readline = sys.stdin.readline
 
 
 def main():
-    n = int(readline().rstrip())
+    n = int(input())
 
     for i in range(50001):
         k = math.floor(i * 1.08)

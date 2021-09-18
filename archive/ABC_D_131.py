@@ -1,12 +1,6 @@
-import math
-import sys
-import bisect
-readline = sys.stdin.readline
-
-
 def main():
-    n = int(readline().rstrip())
-    A = [list(map(int, readline().rstrip().split())) for _ in range(n)]
+    n = int(input())
+    A = [list(map(int,  input().split())) for _ in range(n)]
     A.sort(key=lambda x: x[1])
     sumTime = 0
     maxTime = 0

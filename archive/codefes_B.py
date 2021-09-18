@@ -1,15 +1,11 @@
-import math
-import sys
 import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    n = int(readline().rstrip())
-    dList = list(map(int, readline().rstrip().split()))
-    m = int(readline().rstrip())
-    tList = list(map(int, readline().rstrip().split()))
+    n = int(input())
+    dList = list(map(int,  input().split()))
+    m = int(input())
+    tList = list(map(int,  input().split()))
     dc = collections.Counter(dList)
     tc = collections.Counter(tList)
     tcKeys = list(tc.keys())

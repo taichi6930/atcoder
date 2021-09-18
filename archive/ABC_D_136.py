@@ -1,12 +1,8 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    s = list(readline().rstrip())
+    s = list(input())
     print(s)
 
 

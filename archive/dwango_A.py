@@ -1,13 +1,7 @@
-import math
-import sys
-import bisect
-readline = sys.stdin.readline
-
-
 def main():
-    n = int(readline().rstrip())
-    stList = [list(map(str, readline().rstrip().split())) for _ in range(n)]
-    x = readline().rstrip()
+    n = int(input())
+    stList = [list(map(str,  input().split())) for _ in range(n)]
+    x = input()
     sumT = 0
     flg = False
 

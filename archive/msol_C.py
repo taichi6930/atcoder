@@ -1,13 +1,9 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    n, k = map(int, readline().rstrip().split())
-    A = list(map(int, readline().rstrip().split()))
+    n, k = map(int,  input().split())
+    A = list(map(int,  input().split()))
     for i in range(n - k):
         print('Yes' if A[k+i] > A[i] else 'No')
 

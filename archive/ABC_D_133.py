@@ -1,12 +1,6 @@
-import math
-import sys
-import bisect
-readline = sys.stdin.readline
-
-
 def main():
-    n = int(readline().rstrip())
-    A = list(map(int, readline().rstrip().split()))
+    n = int(input())
+    A = list(map(int,  input().split()))
     k = [0] * (n + 1)
     for i in range(n):
         k[i] += A[i] // 2

@@ -1,5 +1,3 @@
-import collections
-
 n = int(input())
 sList = set()
 

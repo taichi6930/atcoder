@@ -1,10 +1,5 @@
-import math
-import sys
-readline = sys.stdin.readline
-
-
 def main():
-    n = int(readline().rstrip())
+    n = int(input())
     if n % 2 == 1:
         print(0)
     else:

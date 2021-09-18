@@ -1,7 +1,3 @@
-import sys
-readline = sys.stdin.readline
-
-
 def main():
     abk = list(map(int, input().split()))
     k = abk[2]

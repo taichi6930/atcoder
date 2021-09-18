@@ -1,8 +1,5 @@
-import collections
 import math
-
 mod = 10 ** 9 + 7
-alphaList = list("abcdefghijklmnopqrstuvwxyz")
 
 
 def is_prime(n):
@@ -32,7 +29,7 @@ def main():
             ans += n // (i ** j)
         ansList.append(ans)
     for a in ansList:
-        k =  ( k * (a + 1)) % mod
+        k = (k * (a + 1)) % mod
     print(k)
 
 

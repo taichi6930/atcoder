@@ -1,12 +1,8 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    m, d = map(int, readline().rstrip().split())
+    m, d = map(int,  input().split())
     if d < 10:
         print(0)
         return

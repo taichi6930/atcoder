@@ -1,13 +1,9 @@
 import math
-import sys
-import collections
-import bisect
-readline = sys.stdin.readline
 
 
 def main():
-    a, b, c = map(int, readline().rstrip().split())
-    k = int(readline().rstrip())
+    a, b, c = map(int,  input().split())
+    k = int(input())
     i = 0
     while k > i:
         if a >= b:
