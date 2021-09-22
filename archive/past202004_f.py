@@ -3,28 +3,26 @@ import collections
 
 def main():
     n = int(input())
-    AB = sorted([list(map(int, input().split())) for _ in range(n)])
-    AnsList = [0 for _ in range(n)]
-    cnt = 0
-    lis = collections.deque()
+    B = [collections.deque() for _ in range(n)]
 
-    for i in range(1, n + 1):
-        for j in range(n):
-            if cnt >= n:
-                break
-            if AB[cnt][0] != i:
-                break
-            lis.append(AB[cnt][1])
-            cnt += 1
-        lis = collections.deque(sorted(lis, reverse=True))
-        if len(lis) <= 0:
-            AnsList[i] = AnsList[max(0, i - 1)]
+    Blis = []
+
+    ans = 0
+
+    for i in range(n):
+        a, b = map(int, input().split())
+
+        B[a - 1].append(b)
+
+    for j in range(n):
+        Blis += list(B[j])
+        Blis.sort()
+        if len(Blis) == 0:
+            print(ans)
             continue
-        AnsList[i - 1] = AnsList[max(0, i - 2)] + lis[0]
-        lis.popleft()
-
-    for k in range(n):
-        print(AnsList[k])
+        ans += Blis[-1]
+        Blis.pop()
+        print(ans)
 
 
 if __name__ == '__main__':

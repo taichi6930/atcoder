@@ -4,15 +4,12 @@ import collections
 def main():
     n, k = map(int, input().split())
     S = [input() for _ in range(n)]
-
     C = collections.Counter(S)
-    value = list(C.values())
-    C = list(reversed(sorted(list(C.items()), key=lambda x: x[1])))
-
-    if value.count(value[k - 1]) == 1:
-        print(C[k - 1][0])
+    x = sorted(list(C.values()), reverse=True)[k - 1]
+    if list(C.values()).count(x) > 1:
+        print('AMBIGUOUS')
         return
-    print('AMBIGUOUS')
+    print(list(C.keys())[list(C.values()).index(x)])
 
 
 if __name__ == '__main__':
