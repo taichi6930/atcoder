@@ -1,37 +1,60 @@
-# この問題 https://atcoder.jp/contests/atc001/tasks/dfs_a
-
-# 値の入力
 import sys
-n, x, y = map(int, input().split())
-h, w = y + 1, x + 1
-c = [[None for _ in range(w)] for _ in range(h)]
-ans = 10 ** 10
+import datetime
+import collections
+import math
+from itertools import accumulate  # 累積和を求めるときに使う
+from itertools import permutations  # 順列全探索で使う
+from bisect import bisect_left
+from pprint import pprint
+
+from copy import copy
+
+sys.setrecursionlimit(10000)
 
 
-def dfs(x, y):
-    if not(0 <= x < h) or not(0 <= y < w) or c[x][y] == "#":
-        # 壁に当たるか、探索範囲外になった時は処理を終わらせる
-        return
+class ABC:
+    c = [['.' for _ in range(401)] for _ in range(401)]
+    ans = 200 ** 2
 
-    if c[x][y] == "g":
-        # ゴールに到達した時はYesを出力して終了
-        print("Yes")
-        sys.exit()
+    def dfs(self, x, y, cnt=None, c=None):
+        if not(0 <= x <= 400) or not(0 <= y <= 400) or c[y][x] == "#":
+            # 壁に当たるか、探索範囲外になった時は処理を終わらせる
+            return
+        # print(x, y)
 
-    c[x][y] = "#"  # 同じ場所を探索しないように#を入れる
-    dfs(x + 1, y)
-    dfs(x - 1, y)
-    dfs(x, y + 1)
-    dfs(x, y - 1)
+        if c[y][x] == "g":
+            # ゴールに到達した時はYesを出力して終了
+            if self.ans >= cnt:
+                self.ans = cnt
+                print(self.ans)
+            return
+        cnt += 1
+        if cnt > 40:
+            return
 
+        c[y][x] = "#"  # 同じ場所を探索しないように#を入れる
+        self.dfs(x + 1, y + 1, cnt, c=copy(c))
+        self.dfs(x, y + 1,  cnt, c=copy(c))
+        self.dfs(x - 1, y + 1,  cnt, c=copy(c))
+        self.dfs(x + 1, y,  cnt, c=copy(c))
+        self.dfs(x - 1, y,  cnt, c=copy(c))
+        self.dfs(x, y - 1,  cnt, c=copy(c))
 
-def main():
-    # スタート位置を決める
-    sx, sy = 0, 0
-    dfs(sx, sy)
-    # 到達しない場合はNo
-    print("No")
+    def __init__(self):
+        # 障害物のあるマス = n, ゴールのマスを x ,y として取得
+        n, x, y = map(int, input().split())
+        # (0,0) -> (200,200) に平行移動
+        sx, sy = 200, 200
+
+        self.c[200 + y][200 + x] = 'g'
+
+        # 障害物を作成する
+        for _ in range(n):
+            a, b = map(int, input().split())
+            self.c[b + 200][a + 200] = '#'
+        self.dfs(sx, sy, cnt=0, c=copy(self.c))
+        print(self.ans)
 
 
 if __name__ == '__main__':
-    main()
+    ABC()

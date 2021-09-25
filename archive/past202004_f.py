@@ -13,15 +13,13 @@ def main():
         a, b = map(int, input().split())
 
         B[a - 1].append(b)
-
     for j in range(n):
-        Blis += list(B[j])
-        Blis.sort()
+        Blis += B[j]
         if len(Blis) == 0:
             print(ans)
             continue
-        ans += Blis[-1]
-        Blis.pop()
+        ans += max(Blis)
+        Blis.remove(max(Blis))
         print(ans)
 
 
