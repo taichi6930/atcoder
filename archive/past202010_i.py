@@ -1,35 +1,25 @@
 from itertools import accumulate  # 累積和を求めるときに使う
-from bisect import *
+from bisect import bisect_left
 
 
 def main():
     n = int(input())
     A = list(map(int, input().split()))
-
+    k = list(accumulate(A))
     sumA = sum(A)
     acc = [0] + list(accumulate(A)) + \
         list(map(lambda x: x + sumA, list(accumulate(A))))
-    print(acc)
-    # B = list(map(lambda x: x * 2, acc))
-    # l = 0
 
-    # ans = sumA
-    # for i in range(n):
-    #     l += acc[i]
-    #     x = bisect_left(B, l)
-    #     if x <= i:
-    #         x = i + 1
-    #     if x >= i + n:
-    #         x = i + n - 1
-    #     ans = min(ans, abs(B[x] - l))
-    #     y = bisect_right(B, l)
-    #     if y <= i:
-    #         y = i + 1
-    #     if y >= i + n:
-    #         y = i + n - 1
-    #     ans = min(ans, abs(B[x] - l))
-    #     print(ans, l)
-    # print(ans)
+    ans = sumA
+    for i in range(n):
+        l = sumA + acc[i] * 2
+        B = list(map(lambda x: x * 2, acc[i + 1: i + n + 1]))
+        x = bisect_left(B, l)
+        C = list(map(lambda x: abs(x - l),
+                 B[max(0, x - 1): min(n - 1, x + 1)]))
+        ans = min(ans, min(C))
+
+    print(ans == int(input()))
 
 
 if __name__ == '__main__':
