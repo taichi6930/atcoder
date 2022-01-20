@@ -121,9 +121,13 @@ def get_sum_of_arithmetic_progressions(n, a, l=None, d=None):
 
 
 def main():
-    n, k = map(int, input().split())
+    n = int(input())
+    R = list(map(int, input().split()))
     C = list(map(int, input().split()))
-    
+    q = int(input())
+    for i in range(q):
+        r, c = map(int, input().split())
+    print(n, q)
 
 
 if __name__ == '__main__':

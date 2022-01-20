@@ -121,9 +121,20 @@ def get_sum_of_arithmetic_progressions(n, a, l=None, d=None):
 
 
 def main():
-    n, k = map(int, input().split())
-    C = list(map(int, input().split()))
-    
+    n, m = map(int, input().split())
+    name = list(input())
+    kit = list(input())
+    cName = collections.Counter(name)
+
+    ans = 0
+
+    for k in kit:
+        q = cName[k]
+        if q == 0:
+            print(-1)
+            return
+        ans = max(ans, q)
+    print(ans)
 
 
 if __name__ == '__main__':

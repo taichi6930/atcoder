@@ -1,19 +1,28 @@
+import collections
+from itertools import accumulate  # 累積和を求めるときに使う
+
+
 def main():
     n = int(input())
     A = list(map(int, input().split()))
-    B = []
-
-    ans = 0
-    bMax = 0
-    bfin = 0
+    CurrentLocation = [0]
+    MaxLocation = [0]
 
     for i in range(n):
-        B.append(A[i])
-        # 移動した最大値を決める
-        bMax = max(bMax, bfin + A[i])
-        # Bの最後の場所が決まる
-        bfin = A[i] + bfin
-        # bfinをansに移動させて
+        cl = CurrentLocation[i]
+        ml = MaxLocation[i]
+
+        a = A[i]
+        ncl = cl + a
+        CurrentLocation.append(ncl)
+        MaxLocation.append(max(ml, ncl))
+
+    acc = list(accumulate(CurrentLocation))
+    ans = 0
+
+    for i in range(n):
+        ans = max(ans, acc[i] + MaxLocation[i + 1])
+    print(ans)
 
 
 if __name__ == '__main__':

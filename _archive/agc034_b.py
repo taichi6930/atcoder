@@ -1,24 +1,16 @@
 def main():
-    s = list(input())
-    n = len(s)
-
-    ans = 0
-    if n < 3:
-        print(ans)
-        return
-
-    num = 0
-    for i in range(10 ** 9):
-        if num > n - 3:
+    s = list(input().replace('BC', 'D'))
+    cnt, ans = 0, 0
+    for _ in range(10 ** 10):
+        if len(s) <= cnt + 1:
             break
-        if "".join(s[num: num + 3]) != "ABC":
-            num += 1
+        s1, s2 = s[cnt], s[cnt + 1]
+        if s1 == 'A' and s2 == 'D':
+            ans += 1
+            s[cnt: cnt + 2] = ['D', 'A']
+            cnt = max(cnt - 1, 0)
             continue
-        s[num] = "B"
-        s[num + 1] = "C"
-        s[num + 2] = "A"
-        ans += 1
-        num = max(0, num - 2)
+        cnt += 1
     print(ans)
 
 

@@ -121,9 +121,20 @@ def get_sum_of_arithmetic_progressions(n, a, l=None, d=None):
 
 
 def main():
-    n, k = map(int, input().split())
-    C = list(map(int, input().split()))
-    
+    S = list(input())
+    C = collections.Counter(S)
+    print(C)
+    L = collections.deque([1])
+    AA = 1
+    for Z in range(0, 5000):
+        AA *= Z + 1
+        L.append(AA)
+    ans = 0
+    for a in range(C['a'] + 1):
+        for b in range(C['b'] + 1):
+
+            ans += (L[a + b] // L[a] // L[b])
+    print(ans)
 
 
 if __name__ == '__main__':

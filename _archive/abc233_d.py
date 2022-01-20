@@ -1,18 +1,17 @@
+import collections
 from itertools import accumulate  # 累積和を求めるときに使う
 
 
 def main():
-    n = int(input())
+    n, k = map(int, input().split())
     A = list(map(int, input().split()))
-    ans = 10 ** 10
-
     B = [0] + list(accumulate(A))
-    for i in range(n - 1):
-        x = B[i + 1] - B[0]
-        y = B[-1] - B[i + 1]
-        z = abs(x - y)
-        ans = min(ans, z)
+    ans = 0
+    C = collections.Counter([])
 
+    for i in range(n):
+        C[B[i]] = 1 + C[B[i]]
+        ans += C[B[i + 1] - k]
     print(ans)
 
 

@@ -121,9 +121,31 @@ def get_sum_of_arithmetic_progressions(n, a, l=None, d=None):
 
 
 def main():
-    n, k = map(int, input().split())
-    C = list(map(int, input().split()))
-    
+    x = int(input())
+    X = str2intWithArray(list(str(x)))
+
+    if len(X) == 1:
+        print(int(X[0]))
+        return
+    L = collections.deque([])
+    for a in range(X[0], 10):
+        for i in range(-10,  10):
+            y = int(a)
+            strY = str(a)
+            k = y % 10
+            for j in range(1, len(X)):
+                strY += str((y + i * j) % 10)
+                if (y + i * j) > 10 or (y + i * j) < 0:
+                    continue
+                k = (y + i * j) % 10
+                if int(strY) > x:
+                    L.append(int(strY))
+                if int(strY) == x:
+                    print(x)
+                    return
+        if len(L) > 0:
+            break
+    print(min(L))
 
 
 if __name__ == '__main__':

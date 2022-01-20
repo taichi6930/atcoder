@@ -121,9 +121,8 @@ def get_sum_of_arithmetic_progressions(n, a, l=None, d=None):
 
 
 def main():
-    n, k = map(int, input().split())
-    C = list(map(int, input().split()))
-    
+    a, b = map(int, input().split())
+    print('Draw' if abs(a) == abs(b) else 'Ant' if abs(a) < abs(b) else 'Bug')
 
 
 if __name__ == '__main__':

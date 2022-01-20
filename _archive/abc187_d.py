@@ -1,17 +1,17 @@
+import collections
+from itertools import accumulate  # 累積和を求めるときに使う
+from bisect import bisect_right
+
+
 def main():
     n = int(input())
-    A = [None for _ in range(n)]
-    B = [None for _ in range(n)]
-    TA = [None for _ in range(n)]
-
-    for i in range(n):
+    vort = 0
+    AB = collections.deque()
+    for _ in range(n):
         a, b = map(int, input().split())
-        A[i] = a
-        B[i] = b
-        TA[i] = a + b
-
-    ans = - sum(A)
-
+        vort += a
+        AB.append(a * 2 + b)
+    print(bisect_right([0] + list(accumulate(sorted(AB, reverse=True))), vort))
 
 
 if __name__ == '__main__':

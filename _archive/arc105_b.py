@@ -121,9 +121,18 @@ def get_sum_of_arithmetic_progressions(n, a, l=None, d=None):
 
 
 def main():
-    n, k = map(int, input().split())
-    C = list(map(int, input().split()))
-    
+    n = int(input())
+    A = sorted(list(map(int, input().split())))
+
+    for i in range(100000):
+
+        minA = min(A)
+        maxA = max(A)
+        if minA == maxA:
+            print(minA)
+            return
+        A = sorted(list(set(A)))
+        A[-1] = maxA - minA
 
 
 if __name__ == '__main__':

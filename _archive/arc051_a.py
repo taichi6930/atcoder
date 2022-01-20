@@ -120,10 +120,31 @@ def get_sum_of_arithmetic_progressions(n, a, l=None, d=None):
         exit()
 
 
+def isRed(x, y, x0, y0, r):
+    return (x - x0) ** 2 + (y - y0) ** 2 <= r ** 2
+
+
+def isBlue(x, y, x1, y1, x2, y2):
+    return x1 <= x and x <= x2 and y1 <= y and y <= y2
+
+
 def main():
-    n, k = map(int, input().split())
-    C = list(map(int, input().split()))
-    
+    x1, y1, r = map(int, input().split())
+    x2, y2, x3, y3 = map(int, input().split())
+
+    red = False
+    blue = False
+
+    for x in range(-100, 101):
+        for y in range(-100, 101):
+            iRed = isRed(x, y, x1, y1, r)
+            iBlue = isBlue(x, y, x2, y2, x3, y3)
+            if iRed and not(iBlue):
+                red = True
+            if iBlue and not(iRed):
+                blue = True
+    print('YNEOS'[not(iRed)::2])
+    print('YNEOS'[not(iBlue)::2])
 
 
 if __name__ == '__main__':

@@ -1,7 +1,7 @@
 files="./*"
-ignoreFiles=("archive", "makestr.txt", "makestr.py", "temp.py", "file_organization.sh")
+ignoreFiles=("_archive", "makestr.txt", "makestr.py", "temp.py", "file_organization.sh")
 for filepath in $files; do
-    if [ ${filepath:2} = "archive" \
+    if [ ${filepath:2} = "_archive" \
     -o ${filepath:2} = "makestr.txt" \
     -o ${filepath:2} = "makestr.py" \
     -o ${filepath:2} = "temp.py" \
@@ -10,6 +10,6 @@ for filepath in $files; do
         ]; then
         continue;
     fi
-    modifyfilepath="./archive/"${filepath:2}
+    modifyfilepath="./_archive/"${filepath:2}
     mv $filepath $modifyfilepath
 done

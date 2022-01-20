@@ -1,3 +1,5 @@
+# https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_11_B
+
 def dfs(x, t):
     global graph, discoveryTime, finishTime
     # 探索済のチェックを行う（タイムスタンプ）

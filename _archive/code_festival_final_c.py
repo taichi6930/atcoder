@@ -1,16 +1,18 @@
-def str2intWithArray(Array):
-    return list(map(lambda x: int(x), Array))
-
-
 def main():
-    A = int(input())
-    listA = str2intWithArray(list(reversed(str(A))))
-    ans = 0
-    c = 0
-    for i in range(len(listA)):
-        c = 1 if c == 0 else c * A
-        ans += c * listA[i]
-    print(ans)
+    a = int(input())
+
+    for i in range(10, 10 ** 5 + 1):
+        strI = list(str(i))
+
+        sumI = 0
+
+        for j in range(len(strI)):
+            sumI += int(strI[j]) * (i ** (len(strI) - j - 1))
+
+        if sumI == a:
+            print(i)
+            return
+    print(-1)
 
 
 if __name__ == '__main__':
