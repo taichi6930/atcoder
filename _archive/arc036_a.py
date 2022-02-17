@@ -1,17 +1,13 @@
 def main():
     n, k = map(int, input().split())
     T = [int(input()) for _ in range(n)]
-    S = [None for _ in range(n - 2)]
-    S[0] = sum(T[0: 3])
-    if S[0] < k:
-        print(3)
-        return
-    for i in range(n - 3):
-        S[i + 1] = S[0] - T[i] + T[i + 3]
-        if S[i + 1] < k:
-            print(i + 4)
-            return
-    print(-1)
+    ans = -1
+
+    for t in range(n - 2):
+        if sum(T[t: t + 3]) < k:
+            ans = t + 3
+            break
+    print(ans)
 
 
 if __name__ == '__main__':

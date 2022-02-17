@@ -5,14 +5,12 @@ from itertools import accumulate  # 累積和を求めるときに使う
 from itertools import permutations  # 順列全探索で使う
 from bisect import bisect_left
 from pprint import pprint
-from functools import lru_cache  # 同じものは再計算しない
 
 mod = 10 ** 9 + 7
 alphaList = list("abcdefghijklmnopqrstuvwxyz")
 mod2 = 998244353
 
 
-@lru_cache
 def is_prime(n):
     """
     数字が素数かどうかを判定する
@@ -37,7 +35,6 @@ def is_prime(n):
     return True
 
 
-@lru_cache
 def make_divisors(n):
     """
     約数列挙を行う。
@@ -64,7 +61,6 @@ def make_divisors(n):
     return divisors
 
 
-@lru_cache
 def prime_factorization(n):  # 素因数分解を行う
     """
     task:prime factorization
@@ -95,7 +91,6 @@ def int2strWithArray(Array):  # 数字の配列を文字の配列に変換する
     return list(map(lambda x: str(x), Array))
 
 
-@lru_cache
 def cmb(n, r, m=None):  # 組み合わせ計算
     from functools import reduce
     from operator import mul
@@ -111,7 +106,6 @@ def cmb(n, r, m=None):  # 組み合わせ計算
 
 
 # 等差数列の和（初項、末項、公差）
-@lru_cache
 def get_sum_of_arithmetic_progressions(n, a, l=None, d=None):
     try:
         if (d is not None and l is not None):
@@ -126,22 +120,12 @@ def get_sum_of_arithmetic_progressions(n, a, l=None, d=None):
         exit()
 
 
-@lru_cache
-def power_mod(n, k, _mod=mod):
-    # n ** kの余を計算する
-    result = 1
-    for i in range(10 ** 20):
-        if k <= 0:
-            break
-        if (k & 1) == 1:
-            result = (result * n) % _mod
-        n = n * n % _mod
-        k >>= 1
-    return result
-
-
 def main():
-    pass
+    n = int(input())
+    if n < 0:
+        print('Yes' if len(str(bin(abs(n) - 1))) - 2 <= 31 else 'No')
+    else:
+        print('Yes' if len(str(bin(abs(n)))) - 2 <= 31 else 'No')
 
 
 if __name__ == '__main__':

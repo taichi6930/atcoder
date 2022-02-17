@@ -1,9 +1,8 @@
-def sss(strong, experience):
-    #カコモンジムに行く
-    aa = 
-
-    pass
-
-
 x, y, a, b = map(int, input().split())
-print(sss(x, 0))
+ans = 0
+
+while a * x <= x + b and a * x < y:
+    x *= a
+    ans += 1
+
+print(ans + (y - 1 - x) // b)

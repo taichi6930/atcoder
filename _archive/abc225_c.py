@@ -1,28 +1,20 @@
 def main():
     n, m = map(int, input().split())
-    a, b = list(), list()
-    ans = True
+    B = [list(map(int, input().split())) for _ in range(n)]
+    B0 = [7 if B[0][i] % 7 == 0 else B[0][i] % 7 for i in range(m)]
 
-    for i in range(n):
-        b = list(map(int, input().split()))
-        # 横のチェック
-        for j in range(1, m):
-            if b[j] - b[j - 1] != 1:
-                ans = not(ans)
-                break
+    for b in range(len(B0) - 1):
+        if B0[b + 1] - B0[b] != 1 or B[0][b + 1] - B0[b + 1] != B[0][b] - B0[b]:
+            print('No')
+            return
 
-        # 縦のチェック
-        for k in range(m):
-            if len(a) == 0:
-                break
-            if b[k] - a[k] != 7:
-                ans = not(ans)
-                break
+    for a in range(n - 1):
+        for b in range(m):
+            if B[a + 1][b] - B[a][b] != 7:
+                print('No')
+                return
 
-        a = b.copy()
-        if not(ans):
-            break
-    print("NYoe s"[ans::2])
+    print('Yes')
 
 
 if __name__ == '__main__':
