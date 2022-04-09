@@ -1,18 +1,14 @@
-# def main():
-#     k = int(input())
-
-#     if k % 9 != 0:  # kが9の倍数でない場合
-#         print(0)
-#         return
-
-#     p = [1] * (k + 1)
-
-#     for i in range(1, k):
-#         for j in range(min(i, 9)):
-#             p[i] = (p[i] + p[i - j]) % (10 ** 9 + 7)
-
-#     print(p)
+k = int(input())
+mod = 10 ** 9 + 7
 
 
-# if __name__ == '__main__':
-#     main()
+if k % 9 != 0:
+    print(0)
+    exit()
+dp = [1] + [0] * k
+
+for i in range(1, k + 1):
+    for j in range(1, min(i, 9) + 1):
+        dp[i] = (dp[i] + dp[i - j]) % mod
+
+print(dp[-1] % mod)

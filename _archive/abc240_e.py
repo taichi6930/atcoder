@@ -141,7 +141,11 @@ def power_mod(n, k, _mod=mod):
 
 
 def main():
-    pass
+    t = int(input())
+    for _ in range(t):
+        n, m = map(int, input().split())
+        for i in range(n):
+            x, y = map(int, input().split())
 
 
 if __name__ == '__main__':

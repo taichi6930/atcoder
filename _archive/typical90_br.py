@@ -1,33 +1,33 @@
-def main():
-    n = int(input())
-    ansX, ansY = -1, -1
+n = int(input())
+X = []
+Y = []
 
-    X, Y = [0] * n, [0] * n
-    for i in range(n):
-        X[i], Y[i] = map(int, input().split())
-    X.sort()
-    Y.sort()
+for i in range(n):
+    x, y = map(int, input().split())
+    X.append(x)
+    Y.append(y)
 
-    x, y = sum(X) / n, sum(Y) / n
+X.sort()
+Y.sort()
 
-    anskX = 0
-    for i in range(n):
-        anskX += abs(x - X[i])
-    if ansX < 0:
-        ansX = anskX
-    else:
-        ansX = min(ansX, anskX)
+ansX, ansY = 10 ** 15, 10 ** 15
 
-    anskY = 0
-    for i in range(n):
-        anskY += abs(y - Y[i])
-    if ansY < 0:
-        ansY = anskY
-    else:
-        ansY = min(ansY, anskY)
+xpList = [X[(len(X) - 1) // 2]] if len(X) % n == 1 else [
+    X[(len(X)) // 2], X[(len(X) - 1) // 2]]
+ypList = [Y[(len(Y) - 1) // 2]] if len(Y) % n == 1 else [
+    Y[(len(Y)) // 2], Y[(len(Y) - 1) // 2]]
 
-    print(ansX + ansY, x, y)
+for xp in xpList:
+    k = 0
+    for x in X:
+        k += abs(x - xp)
+    ansX = min(ansX, k)
+
+for yp in ypList:
+    k = 0
+    for y in Y:
+        k += abs(y - yp)
+    ansY = min(ansY, k)
 
 
-if __name__ == '__main__':
-    main()
+print(ansX + ansY)

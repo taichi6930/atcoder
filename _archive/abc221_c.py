@@ -1,13 +1,16 @@
-def main():
-    n = sorted(list(input()), reverse=True)
-    a, b = '', ''
-    for i in range(len(n)):
-        if i % 4 == 0 or i % 4 == 3:
-            a += n[i]
-            continue
-        b += n[i]
-    print(int(a) * int(b))
+n = list(input())
+lenN = len(n)
+ans = 0
 
+for i in range(1, 2 ** lenN - 1):
+    a, b = [], []
+    for j in range(lenN):
+        d = i >> j & 1
+        if d:
+            a.append(n[j])
+        else:
+            b.append(n[j])
+    ans = max(ans, int(''.join(sorted(a, reverse=True)))
+              * int(''.join(sorted(b, reverse=True))))
 
-if __name__ == '__main__':
-    main()
+print(ans)

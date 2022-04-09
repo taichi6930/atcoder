@@ -1,23 +1,26 @@
 n, k = map(int, input().split())
-aList = list(map(int, input().split()))
+A = list(map(int, input().split()))
 
-ans = 1
+ans = 0
 
+aSet = set()
+aDic = {i: 0 for i in A}
 
-for i in range(n):
-    if ans + i > n:
-        break
-    aListEx = aList[i: ans + i]
-    aSet = set(aListEx)
-    # print(aListEx, aSet)
-    for j in range(ans + i, n + 1):
-        # if ans + j > n:
-        #     break
-        aSet.add(aList[j])
-        print(aList[i: j + 1], aSet, i, j)
-        #     if len(aSet) > k:
-        #         break
-        #     ans = max(j - i + 1, ans)
+for s in range(n):
+    if s > 0:
+        r = A[s - 1]
+        aDic[r] = max(0, aDic[r] - 1)
+        if aDic[r] == 0:
+            aSet.discard(r)
 
-    pass
+    for i in range(n):
+        if s + ans >= n:
+            break
+        q = A[s + ans]
+        aSet.add(q)
+        aDic[q] += 1
+        if len(aSet) > k:
+            break
+        ans += 1
+
 print(ans)

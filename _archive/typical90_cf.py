@@ -1,35 +1,55 @@
-from bisect import bisect_left
+from bisect import bisect_right
+n = int(input())
+s = list(input())
 
+# oList = []
+# xList = []
 
-def main():
-    n = int(input())
-    S = list(input())
-    oxList = ["o", "x"]
-    ans = 0
+# for i in range(n):
+#     if s[i] == 'o':
+#         oList.append(i)
+#         continue
+#     xList.append(i)
 
-    for i in range(n - 1):
-        T = S[i + 1:]
-        lenT = len(T)
-        index = lenT
+# if len(oList) * len(xList) == 0:
+#     print(0)
+#     exit()
 
-        if S[i] == 'o':
-            index = bisect_left(T, 'x')
-            if 'x' == T[0]:
-                index = 0
-            elif index == lenT:
-                continue
-            ans += lenT - index
+# lenXList = len(xList)
+# lenOList = len(oList)
 
-        elif S[i] == 'x':
-            index = bisect_left(T, 'o')
-            if 'o' == T[0]:
-                index = 0
-            elif index == lenT:
-                continue
-            ans += lenT - index
+# ans = 0
+# for i in range(n):
+#     if s[i] == 'o':
+#         x = bisect_right(xList, i)
+#         if lenXList == x:
+#             continue
+#         ans += n - xList[x]
+#     if s[i] == 'x':
+#         x = bisect_right(oList, i)
+#         if lenOList == x:
+#             continue
+#         ans += n - oList[x]
 
-    print(ans)
+# print(ans)
 
+kList = []
 
-if __name__ == '__main__':
-    main()
+swi = s[0]
+cnt = 0
+
+for i in range(n):
+    if swi == s[i]:
+        cnt += 1
+        continue
+    kList.append(cnt)
+    swi = s[i]
+    cnt = 1
+kList.append(cnt)
+
+ans = n * (n + 1) // 2
+
+for k in kList:
+    ans -= k * (k + 1) // 2
+
+print(ans)
