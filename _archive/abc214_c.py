@@ -1,12 +1,9 @@
-def main():
-    n = int(input())
-    S = list(map(int, input().split()))
-    T = list(map(int, input().split()))
-    U = [None for _ in range(n)]
+n = int(input())
+S = list(map(int, input().split()))
+T = list(map(int, input().split()))
 
-    A = [None for _ in range(n)]
-    B = [None for _ in range(n)]
+for i in range(2 * n):
+    T[(i + 1) % n] = min(T[i % n] + S[i % n], T[(i + 1) % n])
 
-
-if __name__ == '__main__':
-    main()
+for i in range(n):
+    print(T[i])

@@ -1,6 +1,5 @@
-def main():
-    a, b, x, y = map(int, input().split())
+a, b, x, y = map(int, input().split())
+y = min(y, 2 * x)
+a = a if a <= b else a - 1
 
-
-if __name__ == '__main__':
-    main()
+print(x + y * abs(a - b))

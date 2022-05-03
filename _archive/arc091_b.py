@@ -1,15 +1,16 @@
-import math
-from itertools import accumulate
-from copy import deepcopy
+n, k = map(int, input().split())
+
+if k == 0:
+    print(n ** 2)
+    exit()
 
 
-def main():
-    n, k = map(int, input().split())
-    ans = 0
-    for b in range(k + 2, n + 1):
-        ans += (n // b) * (n - k) + max((n % b) - k, 0)
-    print(ans)
+ans = 0
 
+for b in range(k, n + 1):
+    i = b - (k + 1) + 1
+    p = n // b
+    q = n - p * b
+    ans += p * i + max(0, q - k + 1)
 
-if __name__ == '__main__':
-    main()
+print(ans)

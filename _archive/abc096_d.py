@@ -1,8 +1,27 @@
-import collections
-import math
+from collections import deque
+n = int(input())
+
+
+def int2strWithArray(Array):
+    return list(map(lambda x: str(x), Array))
 
 
 def is_prime(n):
+    """
+    数字が素数かどうかを判定する
+
+    Parameters
+    ----------
+    n : int
+        素数かどうかを求めたい数
+
+    Returns
+    -------
+    boolean
+        素数であればTrue
+    """
+    import math
+
     if n == 1:
         return False
 
@@ -13,14 +32,13 @@ def is_prime(n):
     return True
 
 
-def main():
-    primeList = collections.deque()
-    for i in range(55555):
-        if is_prime(i + 1):
-            primeList.append(i + 1)
+ans = deque()
+cnt = 0
+for i in range(5556):
+    if is_prime(i * 10 + 3):
+        ans.append(i * 10 + 3)
+        cnt += 1
+    if cnt >= n:
+        break
 
-    n = int(input())
-
-
-if __name__ == '__main__':
-    main()
+print(' '.join(int2strWithArray(ans)))

@@ -1,9 +1,16 @@
-def main():
-    H, W, n = map(int, input().split())
-    hw = [[None for _ in range(W)] for _ in range(H)]
-    for i in range(n):
-        a, b = map(int, input().split())
+from bisect import bisect_left
+from collections import deque
+h, w, n = map(int, input().split())
+xyList = deque()
+xset = set()
+yset = set()
 
+for _ in range(n):
+    x, y = map(int, input().split())
+    xyList.append([x, y])
+    xset.add(x)
+    yset.add(y)
 
-if __name__ == '__main__':
-    main()
+for i, xy in enumerate(xyList):
+    [x, y] = xy
+    print(bisect_left(list(xset), x) + 1, bisect_left(list(yset), y) + 1)

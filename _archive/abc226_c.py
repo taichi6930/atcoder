@@ -1,37 +1,29 @@
-import collections
+import sys
+sys.setrecursionlimit(500000)
+
+n = int(input())
+time = {}
+kList = {}
+
+for i in range(n):
+    q = list(map(int, input().split()))
+    t, k, A = q[0], q[1], q[2:]
+    time[i + 1] = t
+    kList[i + 1] = A
+
+ansList = set([n])
 
 
-def main():
-    n = int(input())
-    T = collections.deque()
-    A = collections.deque()
-
-    for i in range(n):
-        Z = list(map(int, input().split()))
-        T.append(Z[0])
-        a = []
-        if Z[1] != 0:
-            a = Z[2:]
-        A.append(a)
-
-    C = A[-1]
-    B = set([n])
-
-    for i in range(10 ** 9):
-        D = [] + C
-        if len(C) == 0:
-            break
-        C = []
-        B = set(B) | set(D)
-        for d in D:
-            C += A[d - 1]
-    B = list(B)
-
-    ans = 0
-    for b in B:
-        ans += T[b - 1]
-    print(ans)
+def test(lis):
+    global ansList
+    for a in lis:
+        if a in ansList:
+            continue
+        ansList.add(a)
+        if a in kList:
+            test(kList[a])
 
 
-if __name__ == '__main__':
-    main()
+test(kList[n])
+
+print(sum([time[ans] for ans in ansList]))
