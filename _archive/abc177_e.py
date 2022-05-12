@@ -1,4 +1,15 @@
-import collections
+from collections import Counter
+from math import gcd
+n = int(input())
+A = sorted(list(map(int, input().split())))
+
+k = A[0]
+for i in range(n - 1):
+    k = gcd(A[i + 1], k)
+
+if k > 1:
+    print('not coprime')
+    exit()
 
 
 def prime_factorization(n):  # 素因数分解を行う
@@ -7,42 +18,35 @@ def prime_factorization(n):  # 素因数分解を行う
     return:prime
     type:list
     """
-    i = 2
-    ans = dict()
-    k = n
-    while i ** 2 <= n:
-        while k % i == 0:
-            k = k // i
-            if i in ans:
-                ans[i] += 1
-            else:
-                ans[i] = 1
-        i += 1
-    if k != 1:
-        ans[k] = 1
-    return list(ans.items())
-
-
-def main():
-    n = int(input())
-    A = list(map(int, input().split()))
     lis = []
-    ans = 'setwise coprime'
+    for i in range(2, int(n ** 0.5) + 1):
+        while True:
+            if n % i == 0:
+                lis.append(i)
+                n = n // i
 
-    for a in A:
-        if a == 1:
-            continue
-        k = list(set(prime_factorization(a)))
-        lis += k
+            else:
+                break
 
-    c = collections.Counter(lis)
-    d = c.most_common()[0][1]
-    if d == n:
-        ans = 'not coprime'
-    if d == 1:
-        ans = 'pairwise coprime'
-    print(ans)
+    if n > int(n ** 0.5):
+        lis.append(n)
+
+    return lis
 
 
-if __name__ == '__main__':
-    main()
+setA = set()
+setALen = 0
+
+for a in A:
+    if a == 1:
+        continue
+    newSetA = set(Counter(prime_factorization(a)).keys())
+    newSetALen = len(newSetA)
+    addSetA = setA | newSetA
+    if len(addSetA) != setALen + newSetALen:
+        print('setwise coprime')
+        exit()
+    setA = addSetA
+    setALen = len(addSetA)
+
+print('pairwise coprime')

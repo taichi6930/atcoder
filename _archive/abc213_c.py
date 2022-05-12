@@ -1,16 +1,16 @@
 from bisect import bisect_left
-from collections import deque
 h, w, n = map(int, input().split())
-xyList = deque()
-xset = set()
-yset = set()
+HWList = []
+hSet = set()
+wSet = set()
+for i in range(n):
+    a, b = map(int, input().split())
+    hSet.add(a)
+    wSet.add(b)
+    HWList.append([a, b])
 
-for _ in range(n):
-    x, y = map(int, input().split())
-    xyList.append([x, y])
-    xset.add(x)
-    yset.add(y)
+hList = sorted(list(hSet))
+wList = sorted(list(wSet))
 
-for i, xy in enumerate(xyList):
-    [x, y] = xy
-    print(bisect_left(list(xset), x) + 1, bisect_left(list(yset), y) + 1)
+for i, [p, q] in enumerate(HWList):
+    print(bisect_left(hList, p) + 1, bisect_left(wList, q) + 1)

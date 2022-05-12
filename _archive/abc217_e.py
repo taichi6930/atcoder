@@ -1,30 +1,28 @@
-import collections
+from collections import deque
+from heapq import heapify, heappop, heappush
+q = int(input())
 
+heapifyCount = 0
+A = []
+heapify(A)
+newList = deque([])
 
-def main():
-    topQ = None
-    minQ = None
-    ansQ = collections.deque()
+for _ in range(q):
+    query = list(map(int, input().split()))
+    if query[0] == 1:
+        newList.append(query[1])
+        continue
 
-    q = int(input())
-
-    for i in range(q):
-        w = list(map(int, input().split()))
-        if len(w) == 2:
-            x = w[1]
-            topQ = x
-            minQ = x if minQ is None else min(minQ, x)
+    if query[0] == 2:
+        if heapifyCount > 0:
+            print(heappop(A))
+            heapifyCount -= 1
             continue
-        w = w[0]
-        if w == 2:
-            ansQ.append(topQ)
-            continue
-        if w == 3:
-            topQ = minQ
+        print(newList.popleft())
+        continue
 
-    for j in list(ansQ):
-        print(j)
-
-
-if __name__ == '__main__':
-    main()
+    if query[0] == 3:
+        for k in newList:
+            heappush(A, k)
+            heapifyCount += 1
+        newList = deque([])

@@ -1,29 +1,30 @@
-def main():
-    a, b, c = map(int, input().split())
-    Z = [0, 1, 5, 6]
+a, b, c = map(int, input().split())
 
-    #　そもそも最初の段階でZの範囲内であれば終了
-    if a % 10 in Z:
-        print(a % 10)
-        return
+AList = [1]
 
-    A = [1]
-    B = [1]
+for i in range(100):
+    k = (AList[-1] * a) % 10
+    if k in AList:
+        break
+    AList.append(k)
 
-    for i in range(b):
-        k = (A[i] * a) % 10
-        if k in A:
-            l = A.index(k)
-            lenA = len(A)
-            A = A[l:]
-            b -= lenA - 1
-            print(k, l, A, b)
-            break
+if len(AList) == 1:
+    print(1)
+    exit()
 
-        A.append(k)
+AList[0] = AList[-1]
+AList = AList[:-1]
 
-    print(A)
+BList = [1]
 
+for i in range(100):
+    k = (BList[-1] * b) % 10
+    if k in BList:
+        break
+    BList.append(k)
 
-if __name__ == '__main__':
-    main()
+if len(BList) != 1:
+    BList[0] = BList[-1]
+    BList = BList[:-1]
+
+print(AList, BList)
