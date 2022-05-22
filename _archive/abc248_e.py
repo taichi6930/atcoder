@@ -1,43 +1,44 @@
-from collections import Counter
 from math import gcd
+from collections import Counter
 n, k = map(int, input().split())
-XY = sorted([list(map(int, input().split())) for _ in range(n)])
-xyList = []
+XY = [list(map(int, input().split())) for _ in range(n)]
+tateCounter = Counter()
+abCounter = Counter()
+
+if k == 1:
+    print('Infinity')
+    exit()
 
 for i in range(n - 1):
     for j in range(i + 1, n):
-        st = ''
-        dx = XY[j][0] - XY[i][0]
-        dy = XY[j][1] - XY[i][1]
-        x, y = XY[j][0], XY[j][1]
+        [x1, y1] = XY[i]
+        [x2, y2] = XY[j]
 
-        # dxが0の時、ただの縦直線なので、"dx,dy,{x座標}"を追加する
-        if dx == 0:
-            st += 'x=' + str(x)
-            xyList.append(st)
+        # x1 = x2 の場合、縦直線
+        if x1 == x2:
+            tateCounter[x1] += 1
             continue
 
-        # dyが0の時、ただの横直線なので、"dx,dy,{y座標}"を追加する
-        if dy == 0:
-            st += 'y=' + str(y)
-            xyList.append(st)
-            continue
+        ab = abs(x2 - x1)
+        at = y2 - y1 if x2 - x1 >= 0 else - (y2 - y1)
+        ab, at = ab // gcd(ab, at), at // gcd(ab, at)
 
-        # dx、dyの最適化を行う
-        st += "dx=" + str(dx) + ',' + "dy=" + str(dy) + ','
-        dx, dy = dx // gcd(dx, dy), dy // gcd(dx, dy)
+        ab_b = ab * y1 - at * x1
+        if ab_b == 0:
+            bt = 0
+            bb = 1
+        else:
+            bt = (ab_b if ab > 0 else -1 * ab) // gcd(ab_b, ab)
+            bb = abs(ab) // gcd(ab_b, ab)
+        abCounter[str(at) + '_' + str(ab) + '_' + str(bt) + '_' + str(bb)] += 1
 
-        # y = ax + b = (dy / dx)x + b より
-        # b = y - (dy / dx)x
-        # b = bt / bb とすると
-        # 分子bt = y * dx - x * dy
-        # 分子bb = dx とする
-        bt = y * dx - x * dy
-        bb = dx
 
-        # dt、dbの最適化を行う
-        bt, bb = bt // gcd(bt, bb), bb // gcd(bt, bb)
+ans = 0
 
-        st += 'bt=' + str(bt) + ',' + 'bb=' + str(bb)
-        xyList.append(st)
-print(Counter(xyList))
+for q in list(tateCounter.values()):
+    ans += q * (q - 1) // 2
+
+for q in list(abCounter.values()):
+    ans += q * (q - 1) // 2
+
+print(ans)

@@ -1,20 +1,12 @@
-import math
+n = int(input())
+T = sorted(list(map(int, input().split())), reverse=True)
+t1 = 0
+t2 = 0
 
+for t in T:
+    if t1 < t2:
+        t1 += t
+        continue
+    t2 += t
 
-def main():
-    n = int(input())
-    T = sorted(list(map(int, input().split())), reverse=True)
-
-    maxMinT = math.ceil(sum(T) / 2)
-    a = 0
-
-    for i in range(n):
-        if a + T[i] > maxMinT:
-            continue
-        a += T[i]
-
-    print(max(sum(T) - a, a))
-
-
-if __name__ == '__main__':
-    main()
+print(max(t1, t2))

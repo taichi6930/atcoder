@@ -2,13 +2,15 @@ from collections import Counter
 n, k = map(int, input().split())
 A = list(map(int, input().split()))
 cA = Counter(A)
-n = cA[0]
+cA[0] = min(cA[0], k)
+
+num = n
 ans = 0
 
-for i in range(10 ** 6):
-    k = max(min(n, cA[i]) - min(n, cA[i + 1]), 0)
-    ans += k * (i + 1)
-    n = min(n, cA[i])
-    if n == 0:
+for i in range(10 ** 9):
+    nu = cA[i]
+    ans += max((num - cA[i]), 0) * i
+    num = min(nu, num)
+    if num == 0:
         break
 print(ans)
