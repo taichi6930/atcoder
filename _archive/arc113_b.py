@@ -1,30 +1,14 @@
 a, b, c = map(int, input().split())
 
-AList = [1]
+P = [1]
 
 for i in range(100):
-    k = (AList[-1] * a) % 10
-    if k in AList:
-        break
-    AList.append(k)
+    d = (P[-1] * a) % 10
+    if d in P[1:]:
+        continue
+    P.append(d)
+P[0] = P[-1]
 
-if len(AList) == 1:
-    print(1)
-    exit()
+e = pow(b, c, max(1, len(P) - 1))
 
-AList[0] = AList[-1]
-AList = AList[:-1]
-
-BList = [1]
-
-for i in range(100):
-    k = (BList[-1] * b) % 10
-    if k in BList:
-        break
-    BList.append(k)
-
-if len(BList) != 1:
-    BList[0] = BList[-1]
-    BList = BList[:-1]
-
-print(AList, BList)
+print(P[e])

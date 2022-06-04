@@ -1,18 +1,33 @@
-def main():
-    s = list(input().replace('BC', 'D'))
-    cnt, ans = 0, 0
-    for _ in range(10 ** 10):
-        if len(s) <= cnt + 1:
-            break
-        s1, s2 = s[cnt], s[cnt + 1]
-        if s1 == 'A' and s2 == 'D':
-            ans += 1
-            s[cnt: cnt + 2] = ['D', 'A']
-            cnt = max(cnt - 1, 0)
+from collections import *
+beforeS = deque()
+afterS = deque(list(input().replace('BC', 'D')))
+cntBeforeS = 0
+cntAfterS = len(afterS)
+cnt = 0
+
+for i in range(10 ** 9):
+    if cntAfterS <= 1:
+        break
+
+    s1 = afterS.popleft()
+    s2 = afterS.popleft()
+
+    if s1 != 'A' or s2 != 'D':
+        cntBeforeS += 1
+        cntAfterS -= 1
+        beforeS.append(s1)
+        afterS.appendleft(s2)
+        continue
+
+    cnt += 1
+    afterS.appendleft(s1)
+    afterS.appendleft(s2)
+
+    if cntBeforeS > 0:
+        if beforeS[-1] != 'A':
             continue
-        cnt += 1
-    print(ans)
+        cntBeforeS -= 1
+        cntAfterS += 1
+        afterS.appendleft(beforeS.pop())
 
-
-if __name__ == '__main__':
-    main()
+print(cnt)

@@ -5,6 +5,21 @@ XY = [list(map(int, input().split())) for _ in range(n)]
 tateCounter = Counter()
 abCounter = Counter()
 
+
+def cmb(n, r, m=None):  # 組み合わせ計算
+    from functools import reduce
+    from operator import mul
+
+    r = min(n-r, r)
+    if r == 0:
+        return 1
+    over = reduce(mul, range(n, n - r, -1))
+    under = reduce(mul, range(1, r + 1))
+    if m is None:
+        return over // under
+    return (over // under) % m
+
+
 if k == 1:
     print('Infinity')
     exit()
@@ -35,10 +50,10 @@ for i in range(n - 1):
 
 ans = 0
 
-for q in list(tateCounter.values()):
-    ans += q * (q - 1) // 2
+for k, q in enumerate(list(tateCounter.values()) + list(abCounter.values())):
+    # ans += cmb(q, k * (k - 1) // 2)
+    print(q, (1 + (1 + 8 * q) ** 0.5) / 2)
 
-for q in list(abCounter.values()):
-    ans += q * (q - 1) // 2
-
-print(ans)
+print(tateCounter)
+print(abCounter)
+# print(ans)

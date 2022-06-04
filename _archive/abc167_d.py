@@ -1,30 +1,23 @@
-def main():
-    n, k = map(int, input().split())
-    A = [0] + list(map(int, input().split()))
-    Alist = [1]
-    Blist = []
+# 繰り返しのテレポーター問題
+n, k = map(int, input().split())
+A = list(map(int, input().split()))
+ansSet = set([1])
+ansList = [1]
+l = 1
+swi = False
 
-    ans = 0
-    an2 = 0
+for i in range(k):
+    l = A[l - 1]
+    if l in ansSet:
+        swi = True
+        break
+    ansSet.add(l)
+    ansList.append(l)
 
-    for i in range(min(k, 2 * 10 ** 5)):
-        # Alistにあった場合
-        if A[Alist[i]] in Alist:
-            AlistStart = Alist.index(A[Alist[i]])
-            Blist = Alist[AlistStart:]
-            # print(Alist, Blist)
-            # 既にここまでlen(Alist)だけ消化している
-            # n - len(Alist)のうち、len(Blist)の倍数は消化される
-            q = (k - len(Alist)) % len(Blist)
-
-            # Blistのk番目を取得
-            # print(Blist[q])
-            return
-            # Alistになければappend
-        Alist.append(A[Alist[i]])
-
-    print(Alist[-1])
-
-
-if __name__ == '__main__':
-    main()
+if swi:
+    a = ansList.index(l)
+    k -= a
+    k %= len(ansList[a:])
+    print(ansList[k + a])
+else:
+    print(ansList[-1])

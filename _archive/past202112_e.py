@@ -1,29 +1,23 @@
-n = list(input())
+N = list(input())
+leftHands = set(list('12345'))
+rightHands = set(list('67890'))
 
+ans = 500
+nowFigure = N[0]
 
-def is_left_hand(num):
-    return int(num) > 0 and int(num) <= 5
+for i in range(1, len(N)):
+    nextFigure = N[i]
 
-
-ans = 0
-swi = True
-beforeNum = 0
-
-for i, num in enumerate(n):
-    # 最初は500ms
-    if i == 0:
-        ans += 500
-    # 同じ文字である場合、301ms
-    elif beforeNum == num:
+    # 同じ指なら301msかかる
+    if nowFigure == nextFigure:
         ans += 301
-    # 同じ手である場合、301ms
-    elif is_left_hand(num) == swi:
-        ans += 210
-    else:
-        ans += 100
+        continue
 
-    # 記録する
-    beforeNum = num
-    swi = is_left_hand(num)
+    nowHand = 'l' if nowFigure in leftHands else 'r'
+    nextHand = 'l' if nextFigure in leftHands else 'r'
+
+    # 同じ手なら210msかかる
+    ans += 210 if nowHand == nextHand else 100
+    nowFigure = nextFigure
 
 print(ans)

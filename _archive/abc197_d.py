@@ -1,10 +1,10 @@
-from math import sin, cos, pi
+from math import *
 n = int(input())
 x0, y0 = map(int, input().split())
-xnp2, ynp2 = map(int, input().split())
+xn2, yn2 = map(int, input().split())
+xa, ya = (x0 + xn2) / 2, (y0 + yn2) / 2
 
-xa, ya = (x0 + xnp2) / 2, (y0 + ynp2) / 2
-sint = sin(2 * pi / n)
-cost = cos(2 * pi / n)
+x1 = cos(2 * pi / n) * (x0 - xa) - sin(2 * pi / n) * (y0 - ya) + xa
+y1 = sin(2 * pi / n) * (x0 - xa) + cos(2 * pi / n) * (y0 - ya) + ya
 
-print(xa, ya, sint, cost)
+print(x1, y1)

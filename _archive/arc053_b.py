@@ -1,19 +1,13 @@
-import math
-import collections
+from collections import *
+s = list(input())
+cS = Counter(s)
 
+pair = 0
+alone = 0
 
-def main():
-    S = list(input())
-    CS = collections.Counter(S)
-    CSValues = list(CS.values())
-    A = list(map(lambda x: int(math.copysign(x % 2, x)), CSValues))
+for i, k in enumerate(cS.keys()):
+    q = cS[k]
+    alone += q % 2
+    pair += q // 2
 
-    if CSValues.count(1) <= 1:
-        print(sum(CSValues))
-        return
-
-    print((((sum(CSValues) - CSValues.count(1)) // 2) // CSValues.count(1)) * 2 + 1)
-
-
-if __name__ == '__main__':
-    main()
+print(pair * 2 if alone == 0 else 1 + 2 * int(pair / alone))

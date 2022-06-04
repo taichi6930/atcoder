@@ -7,14 +7,14 @@ ans = 0
 
 def depth(dp, num, aa, bb):
     global ans
+    print(dp, aa, bb)
 
-    if aa + bb == 0:
+    # aを全て使い切ったら終了
+    if aa == 0:
         ans += 1
         return
 
-    # aを全て使い切ったら終了
-    if aa <= 0:
-        ans += 1
+    if aa < 0 or bb < 0:
         return
 
     # aを使いきれない場合終了
@@ -47,6 +47,7 @@ def depth(dp, num, aa, bb):
 
 aa = 0 + a
 bb = 0 + b
-depth(dp, 0, aa, bb)
+newDp = deepcopy(dp)
+depth(newDp, 0, aa, bb)
 
 print(ans)

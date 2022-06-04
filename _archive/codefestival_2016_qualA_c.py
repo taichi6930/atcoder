@@ -1,17 +1,15 @@
+S = list(input())
+k = int(input())
+
 alphaList = list("abcdefghijklmnopqrstuvwxyz")
+alphaDic = {alpha: (0 if alpha == 'a' else 26 - i) for i,
+            alpha in enumerate(alphaList)}
 
-def main():
-    s = list(input())
-    k = int(input())
-    for i in range(len(s) - 1):
-        a = (26 - alphaList.index(s[i]))
-        if 26 - alphaList.index(s[i]) <= k:
-            s[i] = "a"
-            k -= a
-    s[len(s) - 1] = alphaList[(k + alphaList.index(s[len(s) - 1])) % 26]
+for i, s in enumerate(S):
+    if k < alphaDic[s]:
+        continue
+    k -= alphaDic[s]
+    S[i] = 'a'
 
-    print("".join(s))
-
-
-if __name__ == '__main__':
-    main()
+S[-1] = alphaList[(k + alphaList.index(S[-1])) % 26]
+print(''.join(S))

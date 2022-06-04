@@ -1,15 +1,26 @@
-def main():
-    n, k = map(int, input().split())
-    S = [int(input()) for _ in range(n)]
+n, k = map(int, input().split())
+S = [int(input()) for _ in range(n)]
 
-    num = 1
-    ans = 0
+if S.count(0) > 0:
+    print(n)
+    exit()
+ans = 0
+p = S[0]
+st, gl = 0, 0
 
-    for i in range(n):
-        k = 1
-        for j in range(i + 1, n + 1):
-            print(S[i: j], j - i)
+for _ in range(n ** 2):
+    if gl >= n:
+        break
+    if p > k:
+        p = p // S[st]
+        st += 1
+        if st + ans >= n:
+            break
+    else:
+        ans = max(ans, gl - st + 1)
+    gl += 1
+    if gl >= n:
+        break
+    p *= S[gl]
 
-
-if __name__ == '__main__':
-    main()
+print(ans)
