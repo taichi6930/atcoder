@@ -1,14 +1,12 @@
-def main():
-    n = int(input())
-    for a in range(1, 3501):
-        for b in range(1, 3501):
-            q = 4 * a * b - n * (a + b)
-            if q <= 0:
-                continue
-            if (n * a * b) % q == 0:
-                print(a, b, (n * a * b) // q)
-                return
-
-
-if __name__ == '__main__':
-    main()
+N = int(input())
+for h in range(3500, 0, -1):
+    for n in range(3500, 0, -1):
+        a = N * h * n
+        b = 4 * n * h - N * n - N * h
+        if b == 0:
+            continue
+        if a % b != 0:
+            continue
+        if a // b < n:
+            continue
+        exit(print(h, n, a // b))

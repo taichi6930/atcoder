@@ -1,20 +1,8 @@
+n, k = map(int, input().split())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
 
-def main():
-    n, k = map(int, input().split())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
+for i in range(n):
+    k -= abs(A[i] - B[i])
 
-    if (k - sum(a) - sum(b)) % 2 != 0:
-        print("No")
-        return
-
-    cnt = 0
-
-    for i in range(n):
-        cnt += abs(a[i] - b[i])
-
-    print("Yes" if cnt <= k else "No")
-
-
-if __name__ == '__main__':
-    main()
+print('Yes' if k % 2 == 0 and k >= 0 else 'No')

@@ -16,16 +16,15 @@ for i in range(n):
     S.append('b')
     cnt += 2
 
-print(S)
-
 ans = 6 if S[0] == 'b' else 3
 
 for i in range(len(S) - 1):
     if S[i + 1] == 'a' and S[i] == 'a':
         ans *= 2
-        continue
     if S[i + 1] == 'b' and S[i] == 'b':
         ans *= 3
-        continue
+    if S[i + 1] == 'b' and S[i] == 'a':
+        ans *= 2
+    ans = ans % (10 ** 9 + 7)
 
 print(ans)

@@ -1,30 +1,27 @@
-def int2strWithArray(Array):
-    return list(map(lambda x: str(x), Array))
-
-
 n = int(input())
-A = [False] + [None] * (n - 1)
 
-for i in range(n):
-    if A[i] == False:
-        continue
-    A[i] = True
-    for j in range(2, n):
-        if (i + 1) * j - 1 >= n:
-            break
-        A[(i + 1) * j - 1] = False
-A[1] = False
 
-trueNum = 2
-falseNum = 1
+def prime_factorization(n):  # 素因数分解を行う
+    """
+    task:prime factorization
+    return:prime
+    type:list
+    """
+    lis = []
+    for i in range(2, int(n ** 0.5) + 1):
+        while True:
+            if n % i == 0:
+                lis.append(i)
+                n = n // i
 
-B = []
+            else:
+                break
 
-for i in range(n):
-    if A[i]:
-        B.append(trueNum)
-        trueNum += 1
-    else:
-        B.append(falseNum)
-        falseNum += 1
-print(' '.join(int2strWithArray(B)))
+    if n > int(n ** 0.5):
+        lis.append(n)
+
+    return lis
+
+
+print(' '.join(list(map(lambda x: str(x), [
+      len((prime_factorization(i + 1))) + 1 for i in range(n)]))))

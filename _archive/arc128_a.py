@@ -1,6 +1,11 @@
+from collections import *
 n = int(input())
 A = list(map(int, input().split()))
 
-goldList = [1] + [0] * n
-silverList = [0] * (n + 1)
+Gold = [1]
+Silver = [0]
 
+for i in range(n):
+    oldGold = Gold[-1]
+    oldSilver = Silver[-1]
+    

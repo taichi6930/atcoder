@@ -1,18 +1,14 @@
-mod = 10 ** 9 + 7
+from math import *
+n = int(input())
 
+ans = 0
 
-def main():
-    n = int(input())
-    ans = 0
-    for k in range(n + 1):
-        maxNum = int(min(n, (n + k ** 2) ** 0.5))
-        minNum = 1 + k
-        ans2 = maxNum - minNum + 1
-        if ans2 <= 0:
-            break
-        ans = (ans2 + ans) % mod
-    print(ans)
+for a in range(n):
+    p = int(min(n, (n + a ** 2) ** 0.5))
+    q = ceil(max(1, (1 + a ** 2) ** 0.5))
+    r = p - q + 1
+    if r <= 0:
+        break
+    ans += r
 
-
-if __name__ == '__main__':
-    main()
+print(ans)

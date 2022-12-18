@@ -1,8 +1,5 @@
 k, s = map(int, input().split())
-l = [1, 3, 6]
-
 ans = 0
-
 for x in range(k + 1):
     for y in range(x, k + 1):
         z = s - x - y
@@ -10,6 +7,12 @@ for x in range(k + 1):
             break
         if z > k:
             continue
-        ans += l[len(set([x, y, z])) - 1]
+        if x == y and y == z:
+            ans += 1
+            continue
+        if x == y or y == z:
+            ans += 3
+            continue
+        ans += 6
 
 print(ans)

@@ -1,31 +1,22 @@
-import collections
+from collections import *
+n, q = map(int, input().split())
+A = list(map(int, input().split()))
+dic = {}
+cnt = {}
 
+for i, a in enumerate(A):
+    if not a in dic:
+        dic[a] = deque()
+        cnt[a] = 0
+    dic[a].append(i + 1)
+    cnt[a] += 1
 
-def main():
-    n, q = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = {}
-    C = {}
-
-    for z in range(n):
-        num = A[z]
-        if num in B.keys():
-            B[num].append(z + 1)
-            C[num] += 1
-            continue
-        B[num] = collections.deque([z + 1])
-        C[num] = 1
-
-    for i in range(q):
-        x, k = map(int, input().split())
-        if x not in B.keys():
-            print(-1)
-            continue
-        if C[x] < k:
-            print(-1)
-            continue
-        print(B[x][k - 1])
-
-
-if __name__ == '__main__':
-    main()
+for _ in range(q):
+    x, k = map(int, input().split())
+    if x not in dic.keys():
+        print(-1)
+        continue
+    if cnt[x] < k:
+        print(-1)
+        continue
+    print(dic[x][k - 1])

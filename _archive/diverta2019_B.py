@@ -1,13 +1,17 @@
+R, G, B, n = map(int, input().split())
+RGB1 = max(R, G, B)
+RGB3 = min(R, G, B)
+RGB2 = (R + G + B) - (RGB1 + RGB3)
+ans = 0
+for i in range(10 ** 9):
+    if RGB1 * i > n:
+        break
+    for j in range(10 ** 9):
+        if RGB1 * i + RGB2 * j > n:
+            break
+        k = n - (RGB1 * i + RGB2 * j)
+        if k % RGB3 != 0:
+            continue
+        ans += 1
 
-def main():
-    cnt = 0
-    R, G, B, N = list(map(int, input().split()))
-    for r in range(N // R + 1):
-        for g in range((N - r * R)//G + 1):
-            if N - r * R - g * G % B == 0:
-                cnt += 1
-    print(cnt)
-
-
-if __name__ == '__main__':
-    main()
+print(ans)

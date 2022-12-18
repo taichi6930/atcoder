@@ -1,5 +1,4 @@
-import fractions
-
+from math import *
 a, b, c = map(int, input().split())
-k = fractions.gcd(a, b, c)
-print((a + b + c) // k - 3)
+k = gcd(gcd(a, b), c)
+print(a // k + b // k + c // k - 3)

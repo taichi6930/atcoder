@@ -1,14 +1,14 @@
+from collections import *
 q = int(input())
-a = []
-
-for i in range(q):
+K = deque([])
+op = []
+for _ in range(q):
     t, x = map(int, input().split())
     if t == 1:
-        a.insert(0, x)
-        continue
-
+        K.appendleft(x)
     if t == 2:
-        a.append(x)
-        continue
+        K.append(x)
+    if t == 3:
+        op.append(K[x - 1])
 
-    print(a[x - 1])
+print(*op, sep='\n')

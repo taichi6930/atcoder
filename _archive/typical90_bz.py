@@ -1,11 +1,9 @@
-from collections import Counter
-
+from collections import *
 n, m = map(int, input().split())
-ALow = [0] * n
+AB = [sorted(list(map(int, input().split()))) for _ in range(m)]
 
-for i in range(m):
-    a, b = map(int, input().split())
-    a, b = min(a, b), max(a, b)
-    ALow[b - 1] += 1
+dic = defaultdict(list)
+for i, [a, b] in enumerate(AB):
+    dic[b].append(a)
 
-print(Counter(ALow)[1])
+print(sum([1 if len(dic[k]) == 1 else 0 for k in list(dic.keys())]))

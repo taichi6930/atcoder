@@ -1,8 +1,7 @@
 n = int(input())
-sList = set()
-
+se = set()
 for i in range(n):
     s = input()
-    if s not in sList:
+    if not s in se:
         print(i + 1)
-    sList.add(s)
+        se.add(s)

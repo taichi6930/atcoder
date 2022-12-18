@@ -1,25 +1,22 @@
-from collections import Counter
-
-
-def str2intWithArray(Array):  # 文字の配列を数字の配列に変換する
+def str2intWithArray(Array):
     return list(map(lambda x: int(x), Array))
 
 
 n = int(input())
-k = {i: [] for i in range(10)}
+S = [str2intWithArray(list(input())) for _ in range(n)]
+T = [[] for _ in range(10)]
 
-for i in range(n):
-    S = str2intWithArray(list(input()))
-    for j, s in enumerate(S):
-        k[s].append(j)
+for s in S:
+    for i in range(10):
+        T[i].append(s[i])
 
-ans = 10 ** 9
+ANS = [0 for _ in range(10)]
 
 for i in range(10):
-    ansi = 0
-    cK = Counter(k[i])
-    for key in list(cK.keys()):
-        ansi = max(ansi, key + 10 * (cK[key] - 1))
+    for j in range(10):
+        cnt = T[j].count(i)
+        if cnt == 0:
+            continue
+        ANS[i] = max(ANS[i], (cnt - 1) * 10 + j)
 
-    ans = min(ans, ansi)
-print(ans)
+print(min(ANS))

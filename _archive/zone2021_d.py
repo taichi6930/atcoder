@@ -1,47 +1,24 @@
-from collections import deque
+from collections import *
+S = list(input())
+T = deque()
 
+swi = True
 
-def main():
-    S = list(input())
-    n = len(S)
-    T = deque()
-    swi = 1
+for s in S:
+    if s == 'R':
+        swi = not(swi)
+        continue
+    T.append(s) if swi else T.appendleft(s)
 
-    for s in S:
-        if s == "R":
-            swi *= -1
-            continue
+U = []
 
-        if swi == 1:
-            T.append(s)
-            continue
+for i, t in enumerate((T if swi else list(T)[::-1])):
+    if len(U) == 0:
+        U.append(t)
+        continue
+    if t == U[-1]:
+        U.pop()
+        continue
+    U.append(t)
 
-        if swi == -1:
-            T.appendleft(s)
-            continue
-
-    if swi == -1:
-        T.reverse()
-    T = list(T)
-
-    cnt = 0
-    for i in range(10 ** 8):
-        if cnt + 1 >= len(T):
-            break
-        if T[cnt] != T[cnt + 1]:
-            cnt += 1
-            continue
-
-        T.pop(cnt + 1)
-        T.pop(cnt)
-
-        if cnt == 0:
-            cnt += 2
-            continue
-        cnt -= 1
-
-    print("".join(T))
-
-
-if __name__ == '__main__':
-    main()
+print(''.join(U))

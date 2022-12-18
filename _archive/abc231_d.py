@@ -1,55 +1,56 @@
-from collections import deque
+from collections import *
+
 n, m = map(int, input().split())
+AB = [set() for _ in range(n)]
+cAB = Counter()
+for _ in range(m):
+    a, b = map(int, input().split())
+    AB[a - 1].add(b - 1)
+    AB[b - 1].add(a - 1)
+    cAB[a - 1] += 1
+    cAB[b - 1] += 1
 
-AB = [list(map(int, input().split())) for _ in range(m)]
-ab2List = {}
-ab1List = {}
+if m == 0:
+    print('Yes')
+    exit()
 
-for _, [a, b] in enumerate(AB):
-    # ab2Listに入っている場合、OUT
-    if a in ab2List or b in ab2List:
-        print('No')
-        exit()
+if cAB.most_common()[0][0] > 2:
+    print('No')
+    exit()
 
-    # ab1Listに入っている場合、削除してab2Listに移行する
-    if a in ab1List:
-        ab1List[a].append(b)
-        ab2List[a] = ab1List.pop(a)
-    else:
-        ab1List[a] = [b]
+set1 = set()
+set2 = set()
 
-    if b in ab1List:
-        ab1List[b].append(a)
-        ab2List[b] = ab1List.pop(b)
-    else:
-        ab1List[b] = [a]
+for key in list(cAB.keys()):
+    if cAB[key] == 1:
+        set1.add(key)
+    if cAB[key] == 2:
+        set2.add(key)
 
+while len(set1) > 0:
+    k = list(set1)[0]
+    set1.discard(k)
 
-for key in list(ab2List.keys()):
-    k = deque([ab2List[key][0], key, ab2List[key][1]])
-    print(k, ab2List, ab1List)
+    swi = True
+    while swi:
+        if cAB[k] == 0:
+            print('No')
+            exit()
+        l = list(AB[k])[0]
+        if cAB[k] == 1:
+            swi = False
+            set1.discard(l)
+        cAB[k] -= 1
+        cAB[l] -= 1
+        AB[k].discard(l)
+        AB[l].discard(k)
+        set2.discard(k)
+        set2.discard(l)
+        if cAB[k] == 0:
+            del cAB[k]
+        if cAB[l] == 0:
+            del cAB[l]
 
-    for kee in ab2List[key]:
-        if kee in ab2List:
-            ab2List[kee].remove(key)
-            ab1List[kee] = ab2List[kee]
-            ab2List.pop(kee)
-            continue
-        if kee in ab1List:
-            ab1List.pop(kee)
-            continue
-    ab2List.pop(key)
+        l = k
 
-    for i in range(2):
-        for j in range(10 ** 9):
-            kk = k[-1]
-            if kk in ab2List:
-                print(k, ab2List, ab1List)
-                print('No')
-                exit()
-            if not kk in ab1List:
-                break
-            k.append(ab1List[kk][0])
-            ab1List.pop(kk)
-
-        k = deque(list(k)[::-1])
+print('Yes' if len(set2) == 0 else 'No')

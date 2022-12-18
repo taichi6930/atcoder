@@ -1,8 +1,5 @@
-from collections import Counter
+from collections import *
 n = int(input())
 A = list(map(int, input().split()))
-cA = Counter(A)
-
-
-cA[5] -= 1
-print(cA)
+k = len(list(Counter(A).keys()))
+print(k - (1 - k % 2))
