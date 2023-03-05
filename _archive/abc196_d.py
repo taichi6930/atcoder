@@ -7,7 +7,6 @@ ans = 0
 
 def depth(dp, num, aa, bb):
     global ans
-    print(dp, aa, bb)
 
     # aを全て使い切ったら終了
     if aa == 0:

@@ -1,30 +1,17 @@
-def main():
-    S = list(input())
-    n = len(S)
+S = input()
 
-    wordList = ["dream", "dreamer", "erase", "eraser"]
-
-    for i in range(10 ** 6):
-        # 最初に、今の末端の長さを記録していく
-        l = n
-
-        # 文字列があるかどうかをチェックする
-        for word in wordList:
-            if word == "".join(S[max(0, n - len(word)):]):
-                l -= len(word)
-                break
-        # 数値が同じであれば、何も消せてないということなので、終了
-        if l == n:
-            print("NO")
-            return
-        # 文字列がないのであれば終了
-        if l == 0:
-            print("YES")
-            return
-
-        S = S[0: l]
-        n = l
-
-
-if __name__ == '__main__':
-    main()
+for i in range(10 ** 9):
+    k = len(S)
+    if k == 0:
+        exit(print('YES'))
+    lis = ['dream', 'erase', 'dreamer', 'eraser']
+    swi = False
+    for li in lis:
+        lenli = len(li)
+        t = S[max(0, k - lenli):]
+        if t == li:
+            S = S[:k - lenli]
+            swi = True
+            break
+    if not(swi):
+        exit(print('NO'))

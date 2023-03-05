@@ -1,18 +1,17 @@
-from bisect import bisect_left
+n, m = map(int, input().split())
+A = sorted(list(map(int, input().split())))
+B = sorted(list(map(int, input().split())))
+ans = abs(A[0] - B[0])
+a = 0
+b = 0
 
+for i in range(n + m):
+    if a >= n or b >= m:
+        break
+    ans = min(ans, abs(A[a] - B[b]))
+    if A[a] >= B[b]:
+        b += 1
+        continue
+    a += 1
 
-def main():
-    n, m = map(int, input().split())
-    [A, B] = [sorted(list(map(int, input().split()))) for _ in range(2)]
-
-    ans = 10 ** 10
-
-    for i in range(n):
-        q = bisect_left(B, A[i])
-        ans = min(abs(A[i] - B[max(0, q - 1)]), abs(A[i] -
-                                                    B[min(m - 1, q)]), abs(A[i] - B[min(m - 1, q + 1)]), ans)
-    print(ans)
-
-
-if __name__ == '__main__':
-    main()
+print(ans)

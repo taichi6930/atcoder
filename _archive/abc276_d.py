@@ -1,9 +1,5 @@
-
 from collections import Counter
-n = int(input())
-mod = 10 ** 9 + 7
-if n == 1:
-    exit(print(1))
+import math
 
 
 def prime_factorization(n):  # 素因数分解を行う
@@ -28,16 +24,23 @@ def prime_factorization(n):  # 素因数分解を行う
     return lis
 
 
-c = Counter()
+n = int(input())
+A = list(map(int, input().split()))
 
-for i in range(2, n + 1):
-    lis = prime_factorization(i)
-    for j in lis:
-        c[j] += 1
+a_gcd = A[0]
+for i in range(1, n):
+    a_gcd = math.gcd(a_gcd, A[i])
 
-ans = 1
+cnt = 0
+for a in A:
+    cA = Counter(prime_factorization(a // a_gcd))
+    if cA[2] > 0:
+        cnt += cA[2]
+        cA.pop(2)
+    if cA[3] > 0:
+        cnt += cA[3]
+        cA.pop(3)
+    if len(cA) > 0:
+        exit(print(-1))
 
-for key in list(c.keys()):
-    ans = (ans * (c[key] + 1)) % mod
-
-print(ans)
+print(cnt)

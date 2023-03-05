@@ -1,37 +1,43 @@
-import math
+
+from collections import Counter
+n = int(input())
 mod = 10 ** 9 + 7
+if n == 1:
+    exit(print(1))
 
 
-def is_prime(n):
-    if n == 1:
-        return False
+def prime_factorization(n):  # 素因数分解を行う
+    """
+    task:prime factorization
+    return:prime
+    type:list
+    """
+    lis = []
+    for i in range(2, int(n ** 0.5) + 1):
+        while True:
+            if n % i == 0:
+                lis.append(i)
+                n = n // i
 
-    for k in range(2, int(math.sqrt(n)) + 1):
-        if n % k == 0:
-            return False
-
-    return True
-
-
-def main():
-    n = int(input())
-    ansList = []
-    k = 1
-
-    for i in range(2, n + 1):
-        ans = 0
-        # 素数かどうかをチェック
-        if not(is_prime(i)):
-            continue
-        for j in range(1, 20):
-            if (i ** j) > n:
+            else:
                 break
-            ans += n // (i ** j)
-        ansList.append(ans)
-    for a in ansList:
-        k = (k * (a + 1)) % mod
-    print(k)
+
+    if n > int(n ** 0.5):
+        lis.append(n)
+
+    return lis
 
 
-if __name__ == '__main__':
-    main()
+c = Counter()
+
+for i in range(2, n + 1):
+    lis = prime_factorization(i)
+    for j in lis:
+        c[j] += 1
+
+ans = 1
+
+for key in list(c.keys()):
+    ans = (ans * (c[key] + 1)) % mod
+
+print(ans)
