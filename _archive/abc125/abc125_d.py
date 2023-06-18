@@ -1,12 +1,14 @@
-n = int(input())
-A = list(map(int, input().split()))
+def main():
+    n = int(input())
+    A = list(map(int, input().split()))
+    B = [None] * n
+    cnt = 0
+    for i in range(n):
+        if A[i] <= 0:
+            cnt += 1
+        B[i] = abs(A[i])
+    print(sum(B) - 2 * min(B) if cnt % 2 == 1 else sum(B))
 
-for i in range(n - 1):
-    if A[i] > 0:
-        continue
-    if A[i] + A[i + 1] > 0:
-        continue
-    A[i] = - A[i]
-    A[i + 1] = - A[i + 1]
 
-print(sum(A))
+if __name__ == '__main__':
+    main()

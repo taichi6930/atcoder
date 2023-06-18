@@ -1,14 +1,21 @@
-mod = 10 ** 9 + 7
+import math
 
 
 def main():
-    n, k = map(int, input().split())
-    ans = 1
+    n, a, b = map(int,  input().split())
+    mod = 10 ** 9 + 7
 
-    for i in range(k, n + 1):
-        ans = (ans + (n - i + 1) * i + 1) % mod
+    ans = pow(2, n, mod) - 1
 
-    print(ans)
+    nca, ncb = 1, 1
+
+    for i in range(b):
+        ncb = ncb * (n - i) % mod
+        ncb *= pow(i + 1, mod - 2, mod)
+        if i + 1 == a:
+            nca = ncb
+
+    print((ans - (nca + ncb)) % mod)
 
 
 if __name__ == '__main__':

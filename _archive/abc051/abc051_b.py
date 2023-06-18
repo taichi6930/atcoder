@@ -1,18 +1,44 @@
-k, s = map(int, input().split())
-ans = 0
-for x in range(k + 1):
-    for y in range(x, k + 1):
-        z = s - x - y
-        if y > z:
-            break
-        if z > k:
-            continue
-        if x == y and y == z:
-            ans += 1
-            continue
-        if x == y or y == z:
-            ans += 3
-            continue
-        ans += 6
+#入力部分を取得
+#A, B, C = map(int,input().split())
 
-print(ans)
+#sumを取得
+#sum([A,B,C])
+
+#importするとき
+#import math
+
+#配列に入れる
+#b_list=list(map(int,input().split()))
+
+#一つ代入する(数値)
+#e=int(input())
+
+#取得する
+#e=input()
+
+#切り捨て
+#math.floor((3*A + P)/2)
+
+#stringからdatetimeへ変換
+# 例1
+#string_date_1 = '2017/07/01'
+#atetime.datetime.strptime(string_date_1, '%Y/%m/%d')
+
+#forの使い方
+#for i in range(3):
+#    print(haiku[i])
+#for haiku in haikus:
+#    print(haiku)
+
+#分割して受け取る
+#haiku = haikus.split(",")
+
+K,S = map(int,input().split())
+cnt= 0
+
+for x in range(0,K+1):
+    for y in range(0,K+1):
+        if(0 <= S - x - y and S - x - y <= K):
+            cnt += 1
+
+print(cnt)

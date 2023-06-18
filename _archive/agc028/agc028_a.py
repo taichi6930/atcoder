@@ -1,19 +1,13 @@
-import math
-
-
 def main():
-    N, M = map(int, input().split())
+    n, p = map(int, input().split())
+    ans = int(p ** (1 / n))
 
-    g = math.gcd(N, M)
-    n = N//g
-    m = M//g
-    S = input()
-    T = input()
-    ans = n * m * g
-    for i in range(g):
-        if S[i * n] != T[i * m]:
-            ans = -1
-    print(ans)
+    while ans > 0:
+        a = ans ** n
+        if p % a == 0:
+            print(ans)
+            return
+        ans -= 1
 
 
 if __name__ == '__main__':

@@ -1,2 +1,10 @@
-S = list(input())
-X = [1 for _ in range(len(S))]
+import math
+
+
+def main():
+    s = list(input())
+    print(s)
+
+
+if __name__ == '__main__':
+    main()

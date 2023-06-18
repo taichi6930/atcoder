@@ -1,12 +1,12 @@
-n = int(input())
-A = list(map(int, input().split()))
+def main():
+    n = int(input())
+    A = list(map(int,  input().split()))
+    k = [0] * (n + 1)
+    for i in range(n):
+        k[i] += A[i] // 2
+        k[i + 1] += A[i] // 2
+    print(k)
 
-sumA = sum([A[i] * (-1) ** i for i in range(n)])
 
-B = [str(sumA)] + [None] * (n - 1)
-
-for i in range(1, n):
-    sumA = - 1 * (sumA - A[i - 1]) + A[i - 1]
-    B[i] = str(sumA)
-
-print(' '.join(B))
+if __name__ == '__main__':
+    main()

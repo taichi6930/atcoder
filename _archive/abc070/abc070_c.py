@@ -1,7 +1,8 @@
-import math
 n = int(input())
-T = list(set([int(input()) for _ in range(n)]))
-ans = 1
-for t in T:
-    ans = ans * t // math.gcd(ans, t)
-print(ans)
+a = 1
+
+for b in range(n):
+    b = int(input())
+    a = a*b//gcd(a, b)
+
+print(a)

@@ -1,8 +1,6 @@
 n = int(input())
-[s, t] = map(str, input().split())
-st = ''
+s, t = map(str, input().split())
+string = ""
 for i in range(n):
-    st += s[i]
-    st += t[i]
-
-print(st)
+    string += s[i:i+1] + t[i:i+1]
+print(string)

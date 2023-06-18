@@ -1,36 +1,30 @@
-s = input()
-a = int(s[:2])
-b = int(s[2:])
+def test(A, B):
+    if((A > 0 and A <= 12) and (B > 0 and B <= 12)):
+        print("AMBIGUOUS")
+        return
 
-if a == 0:
-    if b == 0:
-        print('NA')
-        exit()
-    if 1 <= b <= 12:
-        print('YYMM')
-        exit()
-    if b > 12:
-        print('NA')
-        exit()
+    if((B > 0 and B <= 12)):
+        print("YYMM")
+        return
 
-if 1 <= a <= 12:
-    if b == 0:
-        print('MMYY')
-        exit()
-    if 1 <= b <= 12:
-        print('AMBIGUOUS')
-        exit()
-    if 12 < b:
-        print('MMYY')
-        exit()
+    if ((A > 0 and A <= 12)):
+        print("MMYY")
+        return
 
-if 12 < a:
-    if b == 0:
-        print('NA')
-        exit()
-    if 1 <= b <= 12:
-        print('YYMM')
-        exit()
-    if 12 < b:
-        print('NA')
-        exit()
+    print("NA")
+
+
+S = list(input())
+A = int(S[0] + S[1])
+B = int(S[2] + S[3])
+test(A, B)
+
+
+# if S[K-1] == "A":
+#     S[K-1] = "a"
+# if S[K-1] == "B":
+#     S[K-1] = "b"
+# if S[K-1] == "C":
+#     S[K-1] = "c"
+
+# print(''.join(S))

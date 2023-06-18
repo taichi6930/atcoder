@@ -1,23 +1,15 @@
-# 繰り返しのテレポーター問題
-n, k = map(int, input().split())
-A = list(map(int, input().split()))
-ansSet = set([1])
-ansList = [1]
-l = 1
-swi = False
+def main():
+    n, k = map(int,  input().split())
+    a = list(map(int,  input().split()))
+    kiroku = [-1] * n
+    for i in range(n):
+        print(a[i]-1, kiroku[a[i]-1])
+        if kiroku[a[i]-1] == -1:
+            kiroku[a[i] - 1] = i
+        else:
+            break
+    print(kiroku)
 
-for i in range(k):
-    l = A[l - 1]
-    if l in ansSet:
-        swi = True
-        break
-    ansSet.add(l)
-    ansList.append(l)
 
-if swi:
-    a = ansList.index(l)
-    k -= a
-    k %= len(ansList[a:])
-    print(ansList[k + a])
-else:
-    print(ansList[-1])
+if __name__ == '__main__':
+    main()

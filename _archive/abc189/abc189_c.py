@@ -1,19 +1,9 @@
-import math
-from itertools import accumulate
+n = int(input())
+A = list(map(int, input().split()))
+ans = 0
 
+for l in range(n):
+    for r in range(l + 1, n + 1):
+        ans = max(min(A[l: r])*(r - l), ans)
 
-def main():
-    n = int(input())
-    A = list(map(int, input().split()))
-    ans = 0
-
-    for i in range(n):
-        k = A[i]
-        for j in range(i, n):
-            k = min(A[j], k)
-            ans = max(k * (j - i + 1), ans)
-    print(ans)
-
-
-if __name__ == '__main__':
-    main()
+print(ans)

@@ -1,18 +1,20 @@
-from pprint import pprint
-h, w = map(int, input().split())
-S = [list(input()) for _ in range(h)]
-ansList = [[0 for i in range(w)] for _ in range(h)]
+H, W = map(int, input().split())
+ans = []
+for h in range(H+2):
+    ans.append([0] * (W + 2))
+qu = []
+for h in range(H):
+    qu.append(input())
 
-for i in range(h):
-    for j in range(w):
-        if S[i][j] == '#':
-            for a in range(3):
-                for b in range(3):
-                    if i + a - 1 < 0 or i + a - 1 >= h or j + b - 1 < 0 or j + b - 1 >= w:
-                        continue
-                    ansList[i + a - 1][j + b - 1] += 1
+for h in range(H):
+    for w in range(W):
+        if qu[h][w] == "#":
+            for i in range(3):
+                for j in range(3):
+                    if ans[h+i][w+j] != "#":
+                        ans[h+i][w+j] += 1
+            ans[h+1][w+1] = "#"
 
-for i in range(h):
-    for j in range(w):
-        print('#' if S[i][j] == '#' else ansList[i][j], end="")
-    print('')
+for h in range(H):
+    result = map(str, ans[h+1][1:W+1])
+    print(''.join(result))

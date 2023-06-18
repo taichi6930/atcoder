@@ -1,9 +1,24 @@
-from collections import Counter
-n = int(input())
-A = list(map(int, input().split()))
-cA = Counter(A)
+def main():
+    # input
+    n = int(input())
+    A = list(map(int,  input().split()))
+    B = [0] * n
 
-sumcA = sum([value * (value - 1) // 2 for value in cA.values()])
+    for a in A:
+        B[a - 1] += 1
 
-for a in A:
-    print(sumcA - cA[a] + 1)
+    total = 0
+    for b in B:
+        if b > 1:
+            total += b * (b - 1) // 2
+
+    C = [0] * n
+    for i, b in enumerate(B):
+        C[i] = total - b + 1
+
+    for a in A:
+        print(C[a-1])
+
+
+if __name__ == '__main__':
+    main()

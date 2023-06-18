@@ -1,11 +1,10 @@
+import collections
 n = int(input())
-setA = set()
+nList = []
 
-for a in range(2, int(n ** 0.5) + 1):
-    for b in range(2, 10 ** 9):
-        k = a ** b
-        if k > n:
+for a in range(2, 10**5 + 1):
+    for b in range(2, 10**5 + 1):
+        if a ** b > n:
             break
-        setA.add(k)
-
-print(n - len(list(setA)))
+        nList.append(a ** b)
+print(n - len(list(collections.Counter(nList).keys())))

@@ -1,6 +1,20 @@
-l, r = map(int, input().split())
-ans = 10 ** 30
-for i in range(l, min(l + 2019, r) + 1):
-    for j in range(i + 1, min(l + 2019, r) + 1):
-        ans = min(i % 2019 * j % 2019, ans)
-print(ans)
+def exam(L, R):
+    min = 2019
+    if L-R > 2019:
+        return 0
+    for i in range(L, R):
+        for j in range(i + 1, R + 1):
+            modval = i*j % 2019
+            if modval < min:
+                min = modval
+                if min == 0:
+                    return 0
+    return min
+
+
+L, R = map(int, input().split())
+print(exam(L, R))
+
+# for i in range(L, R+1):
+#     for j in range(i + 1, R+1):
+#         print(str(i) + "," + str(j))

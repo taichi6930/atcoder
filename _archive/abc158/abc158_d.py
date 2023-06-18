@@ -1,27 +1,22 @@
-import math
+s = input()
+q = int(input())
+flg = 1
 
-
-def main():
-    s = list(input())
-    q = int(input())
-    top = []
-    tail = []
-
-    swi = 1
-    for i in range(q):
-        query = list(map(str, input().split()))
-        if len(query) == 1:
-            swi *= -1
-            continue
+for i in range(q):
+    query = list(input().split())
+    if int(query[0]) == 1:
+        flg *= -1
+    else:
         f, c = int(query[1]), query[2]
-        if (swi == 1 and f == 1) or (swi == -1 and f == 2):
-            top.append(c)
-            continue
-        tail.append(c)
+        if f == 1:
+            if flg == 1:
+                s = c + s
+            else:
+                s += c
+        else:
+            if flg == 1:
+                s += c
+            else:
+                s = c + s
 
-    string = "".join(top[::-1] + s + tail)
-    print(string if swi == 1 else string[::-1])
-
-
-if __name__ == '__main__':
-    main()
+print(s if flg == 1 else s[::-1])

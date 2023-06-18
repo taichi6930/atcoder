@@ -1,10 +1,16 @@
-import math
+import fractions
 
-n, x = map(int, input().split())
-xList = list(map(int, input().split()))
-yList = [abs(x - xList[i]) for i in range(n)]
+n, X = map(int, input().split())
+x = sorted(list(map(int, input().split())))
 
-ans = yList[0]
-for j in range(n):
-    ans = math.gcd(ans, yList[j])
-print(ans)
+xxMin = X - x[0]
+if n != 1:
+    for i in range(n-1):
+        if xxMin > abs(x[i+1]-x[i]):
+            xxMin = abs(x[i+1]-x[i])
+
+print(xxMin)
+
+# xXMin = abs(X - x[n - 1])
+# if xXMin > abs(X-x[i]):
+#     xXMin = abs(X-x[i])

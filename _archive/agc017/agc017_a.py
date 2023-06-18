@@ -1,28 +1,17 @@
 import collections
-from functools import reduce
-from operator import mul
 
 
-def cmb(n, r):
-    r = min(n-r, r)
-    if r == 0:
-        return 1
-    over = reduce(mul, range(n, n - r, -1))
-    under = reduce(mul, range(1, r + 1))
-    return over // under
+def main():
+    # n, p = map(int, input().split())
+    # a = list(map(int, input().split()))
+    # a = list(map(lambda x: x % 2, a))
+    # c = collections.Counter(a)
+    # print(c)
+    cnt = 1
+    for i in range(1, 21):
+        cnt *= i
+    print(cnt)
 
 
-n, p = map(int, input().split())
-A = list(map(int, input().split()))
-B = [A[i] % 2 for i in range(n)]
-C = collections.Counter(B)
-ans = 0
-for i in range(n):
-    k = C[1] - i * 2 - p
-    if k < 0:
-        break
-    ans += cmb(C[1], k)
-
-ans *= 2 ** C[0]
-
-print(ans)
+if __name__ == '__main__':
+    main()
