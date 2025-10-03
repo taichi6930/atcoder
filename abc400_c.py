@@ -6,6 +6,7 @@ A = set([])
 for a in range(1, N):
     if N < 2**a:
         break
+    print(a)
     for b in range(1, N):
         x = 2**a * b**2
         if x > N:
